@@ -14,7 +14,7 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
   return (
     <div className="grid grid-rows-[100px_auto]">
       <div id="HeaderTitle">
-        <h1>Porfolio - Dominik Haas</h1>
+        <h1>Portfolio - Dominik Haas</h1>
       </div>
 
       <NavigationMenu id="HeaderNavigation" className="NavigationMenuRoot bg-slate-400 w-full max-w-full">

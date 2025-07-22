@@ -15,21 +15,21 @@ export type ProjectGroupItem = {
 
 export const projectNavItems = [
   {
-    title: "Playground",
+    title: "EnviDat",
     url: "#",
     icon: SquareTerminal,
     isActive: true,
     items: [
       {
-        title: "History",
+        title: "Frontend",
         url: "#",
       },
       {
-        title: "Starred",
+        title: "Design",
         url: "#",
       },
       {
-        title: "Settings",
+        title: "CI/CD",
         url: "#",
       },
     ],
@@ -77,7 +77,7 @@ export const projectNavItems = [
     ],
   },
   {
-    title: "Settings",
+    title: "Side-Projects",
     url: "#",
     icon: Settings2,
     items: [
