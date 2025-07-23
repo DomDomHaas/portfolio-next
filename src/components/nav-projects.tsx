@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
 import {
   Collapsible,
@@ -18,7 +18,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-import {ProjectGroupItem} from "@/components/projectNavItems";
+import {ProjectGroupItem} from "@/../types/projectTypes";
 
 export function NavProjects(
   {

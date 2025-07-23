@@ -1,3 +1,5 @@
+"use client"
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -5,12 +7,24 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu"
 
+import {Moon, Sun} from "lucide-react"
+import {useState} from "react";
+import {Button} from "@/components/ui/button";
+
 export type NavEntry = {
   title: string,
   href: string,
 }
 
 export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
+
+  const [isDark, setIsDark] = useState(true)
+
+  const toggleIsDark = () => {
+    document.body.classList.toggle("dark");
+    setIsDark(!isDark);
+  }
+
   return (
     <div className="grid grid-rows-[100px_auto]">
       <div id="HeaderTitle">
@@ -26,6 +40,19 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
               </NavigationMenuLink>
             </NavigationMenuItem>
             ))}
+
+          <Button aria-roledescription="button"
+                  onClick={toggleIsDark}
+                  variant="ghost"
+                  size="icon"
+          >
+            { isDark ? (
+              <Moon />
+                ) : (
+              <Sun />
+            )}
+          </Button>
+
         </NavigationMenuList>
       </NavigationMenu>
     </div>

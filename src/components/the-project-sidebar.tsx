@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Sidebar,
   SidebarContent,
@@ -7,7 +9,7 @@ import {
 } from "@/components/ui/sidebar"
 
 import {NavProjects} from '@/components/nav-projects'
-import {ProjectGroupItem} from "@/components/projectNavItems";
+import {ProjectGroupItem} from "@/../types/projectTypes";
 
 type TheProjectSidebarProps = React.ComponentProps<typeof Sidebar> & {
   items: ProjectGroupItem[]
