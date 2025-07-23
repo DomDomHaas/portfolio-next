@@ -4,20 +4,16 @@ import {useEffect, useState} from "react";
 import BlogCard from "@/components/blog-card";
 import BlogHeroCard from "@/components/blog-hero-card";
 import {BlogPost} from "@/../types/blogTypes";
+import {loadPosts} from "@/app/blog/blogApi";
 
 
 
-const loadPosts = async () : Promise<BlogPost[]> => {
-  const response = await fetch(`/content/blog/posts.json`);
-  const json = await response.json();
-  return json.blogPosts;
-}
 
 export default function BlogList() {
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
-  // only on mount
+  // on mount
   useEffect(() => {
     loadPosts().then((blogPosts) => setPosts(blogPosts));
   }, []);
@@ -35,7 +31,7 @@ export default function BlogList() {
 
       </div>
 
-      <div className="grid grid-cols-2 gap-2 m-2 h-auto overflow-auto">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 m-2 h-auto overflow-auto">
         {
           remainingPosts.map((post) => (
             <BlogCard

@@ -1,6 +1,7 @@
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {BlogPost} from "../../types/blogTypes";
+import {NotebookText} from "lucide-react";
 
 export default function BlogCardBody({
  title,
@@ -19,8 +20,11 @@ export default function BlogCardBody({
       </div>
 
       <div className="h-auto justify-self-end content-end">
-        <Button asChild>
-          <Link href={"/blog/" + content}>Read</Link>
+        <Button asChild >
+          <div>
+            <NotebookText />
+            <Link href={"/blog/" + content}>Read</Link>
+          </div>
         </Button>
       </div>
 
