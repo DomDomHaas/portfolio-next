@@ -1,6 +1,8 @@
+# Uncrankd Game Jam 2025 Winter Edition
+
 TL;DR: I'm surprised by many of the game entries. Often they are well-rounded little games, with menu, instructions, story intros, scene transitions and some of them even have a long of content.
 
-https://itch.io/jam/uncrankd-game-jam-winter-edition
+<https://itch.io/jam/uncrankd-game-jam-winter-edition>
 
 At this point I want to congratulate everyone that made an entry. This is really the most important thing: you could commit to making a game with a theme not chosen by yourselves, you did stick to it and let your creativity flow within this limitation and actually made something.
 
@@ -16,4 +18,4 @@ I didn't have time to think about the theme, as I was participating another game
 
 I hope this will encourage game devs to finish or see it as a valuable stepping stone for the next project. I'm looking forward to playing the full versions of some of the game entries.
 
-Also, if you haven't played the game entries, you should: https://itch.io/jam/uncrankd-game-jam-winter-edition/entries
+Also, if you haven't played the game entries, check them out here: <https://itch.io/jam/uncrankd-game-jam-winter-edition/entries>

@@ -1,0 +1,34 @@
+{
+  "blogPosts": [
+    {
+      "title": "Uncrankd Game Jam 2025 Winter Edition",
+      "img": "/images/blog/uncrankd_winter_gamejam_2025.png",
+      "description": "My experience playing and judging games of the Game Jam.",
+      "content": "uncrankedGameJam2025"
+    },
+    {
+      "title": "DevBlog: Start of a Boss Rusher Game?",
+      "img": "/images/blog/bossRusher_1.png",
+      "description": "Is a game with only boss fights fun and can it scale?",
+      "content": "bossRusher"
+    },
+    {
+      "title": "DevBlog: Aftermath of the Boss Rush Game Jam 2025",
+      "img": "/images/blog/DuelOfShadowsStats.png",
+      "description": "Thank every one who downloaded and played Duels of Shadows!",
+      "content": "aftermathBossRushJam"
+    },
+    {
+      "title": "DevBlog: Start of a Boss Rusher Game?",
+      "img": "/images/blog/bossRusher_1.png",
+      "description": "Is a game with only boss fights fun and can it scale?",
+      "content": "bossRusher"
+    },
+    {
+      "title": "DevBlog: Aftermath of the Boss Rush Game Jam 2025",
+      "img": "/images/blog/DuelOfShadowsStats.png",
+      "description": "Thank every one who downloaded and played Duels of Shadows!",
+      "content": "aftermathBossRushJam"
+    }
+  ]
+}

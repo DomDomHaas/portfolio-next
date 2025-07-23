@@ -1,51 +1,32 @@
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import Image from "next/image";
-import {Button} from "@/components/ui/button";
+import { Card } from "@/components/ui/card"
+import { BlogPost } from "../../types/blogTypes";
+import BlogCardBody from "@/components/blog-card-body";
+
+type BlogCardProps = BlogPost & {
+  imgClassName?: string;
+}
+
+const defaultImgClassName = "rounded-t-xl max-h-full w-full object-cover";
 
 export default function BlogCard({
   title,
   img,
   description,
-  className
-} : {
-  title: string;
-  img: string;
-  description: string;
-  className?: string;
-}) {
+  content,
+  imgClassName,
+} : BlogCardProps) {
   return(
-    <Card className={className}>
+    <Card id="BlogCard" className="grid gap-0 py-0">
 
-      <CardHeader className="max-h-[260px]">
-        <img className="rounded max-h-full w-full object-cover"
-             src={img}
-             alt={title} />
-{/*
-        <Image src={img} alt={title} width={100}/>
-*/}
-      </CardHeader>
+      {
+        img ? (
+          <img className={imgClassName ? imgClassName + defaultImgClassName : defaultImgClassName}
+               src={img}
+               alt={title}/>
+        ) : null
+      }
 
-
-      <CardContent>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-        <CardAction>
-          <Button>Read</Button>
-        </CardAction>
-      </CardContent>
-
-{/*
-      <CardFooter>
-      </CardFooter>
-*/}
+      <BlogCardBody title={title} img={img} description={description} content={content} />
 
     </Card>
   )

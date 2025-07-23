@@ -1,50 +1,33 @@
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import Image from "next/image";
-import {Button} from "@/components/ui/button";
+import { Card } from "@/components/ui/card"
+import { BlogPost } from "@/../types/blogTypes";
+import BlogCardBody from "@/components/blog-card-body";
+
+// const defaultImgClassName = "rounded w-full relative bottom-1/4";
+const defaultImgClassName = "md:h-[300px] h-[200px] overflow-hidden object-cover";
+
+type BlogHeroProps = BlogPost & {
+  imgClassName?: string;
+}
 
 export default function BlogHeroCard({
   title,
   img,
   description,
-  className
-} : {
-  title: string;
-  img: string;
-  description: string;
-  className?: string;
-}) {
+  content,
+  imgClassName,
+} : BlogHeroProps) {
   return(
-    <Card className={className}>
+    <Card id="BlogHeroCard" className="grid grid-cols-[1fr_200px] md:grid-cols-[200px_auto] h-[200px] md:h-[300px] gap-0 overflow-hidden m-2 py-0">
 
-      <div className="flex flex-row gap-5 pl-5">
-        <div className="py-5">
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-          <CardAction>
-            <Button>Read</Button>
-          </CardAction>
-        </div>
+      <BlogCardBody title={title} img={img} description={description} content={content} />
 
-        <img className="rounded max-h-full w-full"
-             src={img}
-             alt={title}/>
-      </div>
-
-      <CardContent>
-      </CardContent>
-
-{/*
-      <CardFooter>
-      </CardFooter>
-*/}
+      {
+        img ? (
+          <img className={ imgClassName ? imgClassName + defaultImgClassName : defaultImgClassName}
+               src={img}
+               alt={title}/>
+        ) : null
+      }
 
     </Card>
   )

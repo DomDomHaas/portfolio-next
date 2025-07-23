@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body
-      className={`bg-slate-200 ${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`bg-slate-200 overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased`}
     >
 {/*
       className={`${anaheim.variable} antialiased`}
@@ -62,8 +62,11 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 */}
 
     <div
-      className="md:grid
-                 md:grid-cols-[1fr_6fr_1fr] md:grid-rows-[1fr_6fr_1fr] md:gap-5
+      className="grid
+                 grid-rows-[136px_10fr_1fr]
+                 sm:grid-cols-1
+                 md:grid-cols-[1fr_10fr_1fr]
+                 h-screen
                  font-[family-name:var(--font-geist-sans)]"
       style={{
         gridTemplateAreas: `
@@ -87,6 +90,10 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
       </header>
 
       <main id="rootMain"
+            className="
+              overflow-auto
+              mt-1
+            "
             style={{
               gridArea: 'main',
             }}
