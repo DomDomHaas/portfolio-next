@@ -1,8 +1,25 @@
 {
   "projects": [
     {
-      "title": "EnviDat",
-      "img": "/images/projects/EnviDat_logo_128.png"
+      "title": "EnviDat - WSL",
+      "items": [
+        {
+          "title": "Frontend",
+          "images": ["/images/projects/EnviDat_logo_128.png"],
+          "tags": ["vue", "frontend", "vuetify", "storybook"],
+          "content": "envidatFrontend"
+        },
+        {
+          "title": "Logo Design",
+          "images": ["/images/projects/EnviDat_logo_128.png"],
+          "tags": ["design", "logo"]
+        },
+        {
+          "title": "CI/CD",
+          "images": ["/images/projects/EnviDat_logo_128.png"],
+          "tags": ["vue", "frontend", "vuetify", "storybook"]
+        }
+      ]
     }
   ]
 }

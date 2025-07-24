@@ -33,13 +33,15 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
 
       <NavigationMenu id="HeaderNavigation" className="NavigationMenuRoot bg-slate-400 w-full max-w-full">
         <NavigationMenuList className="NavigationMenuList">
-          {entries.map((entry) => (
-            <NavigationMenuItem  key={entry.href}>
-              <NavigationMenuLink href={entry.href}>
-                {entry.title}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            ))}
+          {
+            entries.map((entry) => (
+              <NavigationMenuItem  key={entry.href}>
+                <NavigationMenuLink href={entry.href}>
+                  {entry.title}
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))
+          }
 
           <Button aria-roledescription="button"
                   onClick={toggleIsDark}
