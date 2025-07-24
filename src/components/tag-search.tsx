@@ -1,0 +1,49 @@
+import {BadgeCheckIcon, Tags} from "lucide-react"
+import {Badge} from "@/components/ui/badge";
+/*
+import {Tag} from "../../types/projectTypes";
+*/
+
+
+type TagSearchProps = {
+  projectTags: string[];
+  selectedTags: string[];
+  onTagSelection(value: string): void;
+}
+
+const isSelected = (selectedTags: string[], tagName: string) => {
+  return selectedTags?.filter((selectedTag) => selectedTag === tagName).length > 0;
+}
+
+export function TagSearch({ projectTags, selectedTags, onTagSelection } : TagSearchProps) {
+
+/*
+  const stuff = ['vue', 'react', 'react-dom'];
+*/
+
+  return (
+    <div className="flex flex-wrap">
+      <Tags className="mx-1" />
+
+      <div >
+        {
+          projectTags.map(projectTag => (
+            <Badge className="mx-1"
+                   title={projectTag}
+                   key={projectTag}
+                   onClick={() => onTagSelection(projectTag)}
+            >
+              {
+                isSelected(selectedTags, projectTag) ? (
+                  <BadgeCheckIcon />
+                ) : null
+              }
+              { projectTag }
+            </Badge>
+          ))
+        }
+
+      </div>
+    </div>
+  )
+}
