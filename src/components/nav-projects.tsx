@@ -18,9 +18,11 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-import {ProjectGroupItem, ProjectItem} from "@/../types/projectTypes";
+import {Project, ProjectGroupItem, ProjectItem} from "@/../types/projectTypes";
 import {SidebarSearch} from "@/components/sidebar-search";
 import {useState} from "react";
+import {log} from "next/dist/server/typescript/utils";
+import Link from "next/link";
 
 const subSelectItems = (items: ProjectGroupItem[] | ProjectItem[] | undefined, text: string): ProjectGroupItem[] | ProjectItem[] => {
   if (!items || !items.length) {
@@ -42,14 +44,20 @@ const subSelectItems = (items: ProjectGroupItem[] | ProjectItem[] | undefined, t
 export function NavProjects(
   {
     items,
+    onSelectProject,
   }: {
-  items: ProjectGroupItem[]
+    items: Project[]
+    onSelectProject(title: string): void;
 }) {
 
   const [searchText, setSearchText] = useState<string>('');
 
   const assignSearchText = (text: string) => {
     setSearchText(text);
+  }
+
+  const selectProject = (title: string) => {
+    onSelectProject(title)
   }
 
   return <SidebarGroup>
@@ -79,9 +87,9 @@ export function NavProjects(
                 {
                   subSelectItems(item?.items, searchText).map((subItem) => (
                   <SidebarMenuSubItem key={subItem.title}>
-                    <SidebarMenuSubButton asChild>
-                      <a href={subItem.url}>
-                        <span>{subItem.title}</span>
+                    <SidebarMenuSubButton asChild >
+                      <a href={subItem.url} onClick={() => selectProject(subItem.title)}>
+                        <span >{subItem.title}</span>
                       </a>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
