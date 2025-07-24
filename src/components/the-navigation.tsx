@@ -26,7 +26,10 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
   }
 
   return (
-    <div className="grid grid-rows-[100px_auto]">
+    <div className="grid
+                    grid-rows-[64px_36px]
+                    md:grid-rows-[100px_36px]
+        ">
       <div id="HeaderTitle">
         <h1>Portfolio - Dominik Haas</h1>
       </div>

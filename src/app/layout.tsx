@@ -3,6 +3,7 @@ import {Anaheim, Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -63,7 +64,8 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 
     <div
       className="grid
-                 grid-rows-[136px_10fr_1fr]
+                 grid-rows-[100px_10fr_1fr]
+                 md:grid-rows-[136px_10fr_1fr]
                  sm:grid-cols-1
                  md:grid-cols-[1fr_10fr_1fr]
                  h-screen

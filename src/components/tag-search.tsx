@@ -23,19 +23,19 @@ export function TagSearch({ projectTags, selectedTags, onTagSelection } : TagSea
 
   return (
     <div className="flex flex-wrap">
-      <Tags className="mx-1" />
+      <Tags className="mx-1 " />
 
       <div >
         {
           projectTags.map(projectTag => (
-            <Badge className="mx-1"
+            <Badge className="m-1 py-1"
                    title={projectTag}
                    key={projectTag}
                    onClick={() => onTagSelection(projectTag)}
             >
               {
                 isSelected(selectedTags, projectTag) ? (
-                  <BadgeCheckIcon />
+                  <BadgeCheckIcon className="m-0 p-0"/>
                 ) : null
               }
               { projectTag }
