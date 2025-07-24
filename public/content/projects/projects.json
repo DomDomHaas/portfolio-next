@@ -5,13 +5,13 @@
       "items": [
         {
           "title": "Frontend",
-          "images": ["/images/projects/EnviDat_logo_128.png"],
+          "images": ["/images/projects/EnviDat_Flyer.jpg","/images/projects/EnviDat_logo_128.png"],
           "tags": ["vue", "frontend", "vuetify", "storybook"],
           "content": "envidatFrontend"
         },
         {
-          "title": "Logo Design",
-          "images": ["/images/projects/EnviDat_logo_128.png"],
+          "title": "Design - Logo & Posters",
+          "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
           "tags": ["design", "logo"]
         },
         {

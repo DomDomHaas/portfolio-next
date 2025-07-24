@@ -86,14 +86,14 @@ export function NavProjects(
               <SidebarMenuSub>
                 {
                   subSelectItems(item?.items, searchText).map((subItem) => (
-                  <SidebarMenuSubItem key={subItem.title}>
-                    <SidebarMenuSubButton asChild >
-                      <a href={subItem.url} onClick={() => selectProject(subItem.title)}>
-                        <span >{subItem.title}</span>
-                      </a>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                ))
+                    <SidebarMenuSubItem key={subItem.title}>
+                      <SidebarMenuSubButton asChild >
+                        <a href={subItem.url} onClick={() => selectProject(subItem.title)}>
+                          <span >{subItem.title}</span>
+                        </a>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  ))
                 }
               </SidebarMenuSub>
             </CollapsibleContent>
