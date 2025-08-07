@@ -7,6 +7,7 @@ import {loadPostContent, loadPostHeadImg } from "@/app/blog/blogApi";
 import '@/app/github-markdown.css'
 import {Button} from "@/components/ui/button";
 import {CircleX} from "lucide-react";
+import {Skeleton} from "@/components/ui/skeleton";
 
 /*
 import '@/app/github-markdown-dark.css'
@@ -50,7 +51,7 @@ export default function BlogPost() {
 
 
   return (
-    <div className="relative h-full p-2 mb-2">
+    <div className="min-h-0 h-full p-2 mb-2 relative">
 
       <Button className="absolute right-4 md:right-7 top-4
                          cursor-pointer shadow-md
@@ -58,7 +59,7 @@ export default function BlogPost() {
               onClick={navigateToBlogList}
               variant="outline"
       >
-        <CircleX /> Back
+        <CircleX/> Back
       </Button>
 
       <div className="grid
@@ -68,24 +69,46 @@ export default function BlogPost() {
                       overflow-auto
                       bg-slate-300
                       m-1 p-2 rounded-xl
-                      relative
                       ">
 
-        <div className="">
-          {
-            postImg ? (
-              <img className="rounded-xl justify-self-center"
-                   src={postImg}
-                   alt={postId}
-              />
-            ) : null
-          }
+        { html ? (
+          <>
+            <div className="">
+              {
+                postImg ? (
+                  <img className="rounded-xl justify-self-center"
+                       src={postImg}
+                       alt={postId}
+                  />
+                ) : null
+              }
+            </div>
 
-        </div>
+            <article className={`markdown-body pt-5 p-1  ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
+                     dangerouslySetInnerHTML={{__html: html || ''}}/>
+          </>
+        ) : (
+          <>
+            <div className="pt-4">
+              <div className="flex space-y-3 mx-auto justify-self-center">
+                <Skeleton className="h-[250px] w-[250px] lg:w-[400px] rounded-xl mx-2"/>
+              </div>
+            </div>
 
-        <article className={`markdown-body p-1  ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
-                 dangerouslySetInnerHTML={{__html: html || ''}}/>
+            <div>
+              <div className="w-full justify-self-center mt-10">
+                <div className="mx-5 space-y-2">
+                  <Skeleton className="h-4 w-full"/>
+                  <Skeleton className="h-4 w-5/6"/>
+                  <Skeleton className="h-4 w-5/8"/>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
       </div>
+
     </div>
   );
 }

@@ -1,23 +1,17 @@
 "use client"
 
-import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar"
+
 import {TheProjectSidebar} from "@/components/the-project-sidebar";
 
-// import projectEntries from '@/content/projects/projects.json'
-import {projectNavItems} from "@/components/projectNavItems";
 import {TagSearch} from "@/components/tag-search";
 import {useEffect, useState} from "react";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {Project, ProjectItem} from "../../../types/projectTypes";
 import ProjectBody from "@/components/project-body";
-/*
-import {Tag} from "../../../types/projectTypes";
-*/
 
 
 const extractProjectTags = (projects: Project[]) => {
@@ -90,6 +84,7 @@ export default function ProjectsList() {
     });
   }
 
+  const loadingProjects = () => projects?.length <= 0;
 /*
   className="grid grid-rows-1 h-svh gap-4 grid-cols-1"
 */
@@ -112,7 +107,7 @@ export default function ProjectsList() {
       >
 
         <TagSearch
-          loading={projects?.length <= 0}
+          loading={loadingProjects()}
           projectTags={projectTags}
           selectedTags={selectedTags}
           onTagSelection={(value) => toggleTagSelected(value)}
@@ -129,7 +124,7 @@ export default function ProjectsList() {
           {
             selectedProject ? (
               <ProjectBody
-                loading={projects?.length <= 0}
+                loading={loadingProjects()}
                 projectItem={selectedProject}
               />
             ) : null

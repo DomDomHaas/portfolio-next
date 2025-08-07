@@ -52,13 +52,7 @@ export default function RootLayout({
     >
 {/*
       className={`${anaheim.variable} antialiased`}
-*/}
-
-{/*
 min-h-screen p-8 pb-20 gap-16 sm:p-20
-*/}
-
-{/*
 sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 */}
 
@@ -68,46 +62,33 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
                  md:grid-rows-[136px_10fr_1fr]
                  grid-cols-1
                  lg:grid-cols-[1fr_14fr_1fr]
+                 lg:[grid-template-areas:'.nav.''.main.''.foot.']
                  h-screen
                  font-[family-name:var(--font-geist-sans)]"
-      style={{
-        gridTemplateAreas: `
-                ". nav ."
-                ". main ."
-                ". foot ."
-              `
-      }}
     >
 
-{/*
-*/}
-
-      <header id="rootHead"
-              className="bg-slate-100"
-              style={{
-                gridArea: 'nav',
-              }}
+      <header
+        id="rootHead"
+        className="bg-slate-100 lg:[grid-area:nav]"
       >
         <TheNavigation entries={NavEntries}/>
       </header>
 
-      <main id="rootMain"
-            className="
-              h-full
-              overflow-hidden
-              mt-1
-            "
-            style={{
-              gridArea: 'main',
-            }}
+      <main
+        id="rootMain"
+        className="
+          h-full
+          overflow-hidden
+          mt-1
+          lg:[grid-area:main]
+        "
       >
         {children}
       </main>
 
-      <footer id="rootFoot"
-              style={{
-                gridArea: 'foot',
-              }}
+      <footer
+        id="rootFoot"
+        className="lg:[grid-area:foot]"
       >
 
       </footer>
