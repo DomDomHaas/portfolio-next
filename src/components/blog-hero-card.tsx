@@ -2,8 +2,7 @@ import { Card } from "@/components/ui/card"
 import { BlogPost } from "@/../types/blogTypes";
 import BlogCardBody from "@/components/blog-card-body";
 
-// const defaultImgClassName = "rounded w-full relative bottom-1/4";
-const defaultImgClassName = "md:h-[300px] h-[200px] overflow-hidden object-cover justify-self-end";
+const defaultImgClassName = "lg:h-[300px] md:h-[250px] h-[200px] overflow-hidden object-cover justify-self-end";
 
 type BlogHeroProps = BlogPost & {
   imgClassName?: string;
@@ -19,10 +18,9 @@ export default function BlogHeroCard({
   return(
     <Card id="BlogHeroCard"
           className=" grid
-                      grid-cols-[1fr_200px]
-                      md:grid-cols-[250px_auto]
-                      lg:grid-cols-[450px_auto]
-                      h-[200px] md:h-[300px]
+                      grid-cols-[1fr_1fr]
+                      xl:grid-cols-[750px_auto]
+                      h-[200px] md:h-[250px] lg:h-full
                       gap-0 overflow-hidden m-2 py-0
                       ">
 

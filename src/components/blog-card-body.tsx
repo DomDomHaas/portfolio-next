@@ -20,11 +20,12 @@ export default function BlogCardBody({
       </div>
 
       <div className="h-auto justify-self-end content-end">
-        <Button asChild >
-          <div>
-            <NotebookText />
-            <Link href={"/blog/" + content}>Read</Link>
-          </div>
+        <Button asChild className="shadow-md"
+                variant="outline"
+        >
+          <Link href={"/blog/" + content}>
+            <NotebookText /> Read
+          </Link>
         </Button>
       </div>
 

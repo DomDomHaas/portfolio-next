@@ -19,27 +19,40 @@ export default function BlogList() {
   }, []);
 
   const firstPost = posts[0] || {};
-  const remainingPosts = posts ? posts.slice(1, posts.length) : [];
+  const remainingPosts = posts ?
+    [...posts.slice(1, posts.length),...posts.slice(1, posts.length)]
+    : [];
 
   return (
-    <div className="grid grid-rows-[200px_auto] md:grid-rows-[300px_auto] gap-4 grid-cols-1">
-      <div className="bg-slat-500 w-full">
+    <div className="min-h-0 h-full">
+      <div className="grid
+                      grid-rows-[200px_1fr]
+                      md:grid-rows-[250px_1fr]
+                      lg:grid-rows-[300px_1fr]
+                      gap-4
+                      grid-cols-1
+                      h-full
+                      overflow-auto
+                      ">
+        <div className="bg-slat-500 w-full">
+          <BlogHeroCard
+            {...firstPost}
+          />
+        </div>
 
-        <BlogHeroCard
-          {...firstPost}
-        />
+        <div className="min-h-0">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 p-1 m-1">
+            {
+              remainingPosts.map((post, index) => (
+                <BlogCard
+                  key={`${post.title}_${index}`}
+                  {...post}
+                />
+              ))
+            }
+          </div>
+        </div>
 
-      </div>
-
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 m-2 h-auto overflow-auto">
-        {
-          remainingPosts.map((post) => (
-            <BlogCard
-              key={post.title}
-              {...post}
-            />
-          ))
-        }
       </div>
     </div>
   )

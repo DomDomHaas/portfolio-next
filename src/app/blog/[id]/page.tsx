@@ -50,28 +50,42 @@ export default function BlogPost() {
 
 
   return (
-    <div className="grid grid-rows-[auto_1f] gap-2 bg-slate-400 m-1 p-2 rounded-xl">
+    <div className="relative h-full p-2 mb-2">
 
-      <div className="relative">
-        {
-          postImg ? (
-            <img className="rounded justify-self-center"
-                 src={postImg}
-                 alt={postId}
-            />
-          ) : null
-        }
+      <Button className="absolute right-4 md:right-7 top-4
+                         cursor-pointer shadow-md
+                         z-100 p-0 m-1 "
+              onClick={navigateToBlogList}
+              variant="outline"
+      >
+        <CircleX /> Back
+      </Button>
 
-        <Button className="absolute right-0 top-0 cursor-pointer"
-                onClick={navigateToBlogList}
-                variant="secondary"
-                >
-          <CircleX /> Back
-        </Button>
+      <div className="grid
+                      grid-rows-[auto_1fr]
+                      gap-2
+                      h-full
+                      overflow-auto
+                      bg-slate-300
+                      m-1 p-2 rounded-xl
+                      relative
+                      ">
+
+        <div className="">
+          {
+            postImg ? (
+              <img className="rounded-xl justify-self-center"
+                   src={postImg}
+                   alt={postId}
+              />
+            ) : null
+          }
+
+        </div>
+
+        <article className={`markdown-body p-1  ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
+                 dangerouslySetInnerHTML={{__html: html || ''}}/>
       </div>
-
-      <article className={`markdown-body  ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
-               dangerouslySetInnerHTML={{__html: html || ''}}/>
     </div>
   );
 }
