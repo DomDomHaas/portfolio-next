@@ -34,7 +34,9 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
         <h1>Portfolio - Dominik Haas</h1>
       </div>
 
-      <NavigationMenu id="HeaderNavigation" className="NavigationMenuRoot bg-slate-400 w-full max-w-full">
+      <NavigationMenu
+        id="HeaderNavigation"
+        className="NavigationMenuRoot bg-slate-200 w-full max-w-full">
         <NavigationMenuList className="NavigationMenuList">
           {
             entries.map((entry) => (

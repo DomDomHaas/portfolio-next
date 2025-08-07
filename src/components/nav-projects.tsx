@@ -21,8 +21,6 @@ import {
 import {Project, ProjectGroupItem, ProjectItem} from "@/../types/projectTypes";
 import {SidebarSearch} from "@/components/sidebar-search";
 import {useState} from "react";
-import {log} from "next/dist/server/typescript/utils";
-import Link from "next/link";
 
 const subSelectItems = (items: ProjectGroupItem[] | ProjectItem[] | undefined, text: string): ProjectGroupItem[] | ProjectItem[] => {
   if (!items || !items.length) {
@@ -63,7 +61,8 @@ export function NavProjects(
   return <SidebarGroup>
     <SidebarSearch onSearchChange={assignSearchText} />
 
-    <SidebarGroupLabel>Projects</SidebarGroupLabel>
+    <SidebarGroupLabel className="mt-2">Projects</SidebarGroupLabel>
+
     <SidebarMenu>
       {
         subSelectItems(items, searchText).map((item) => <Collapsible
@@ -75,8 +74,9 @@ export function NavProjects(
           <SidebarMenuItem>
 
             <CollapsibleTrigger asChild>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
+              <SidebarMenuButton tooltip={item.title}
+                                 className="cursor-pointer"
+              >
                 <span>{item.title}</span>
                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
               </SidebarMenuButton>
@@ -87,8 +87,11 @@ export function NavProjects(
                 {
                   subSelectItems(item?.items, searchText).map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild >
-                        <a href={subItem.url} onClick={() => selectProject(subItem.title)}>
+                      <SidebarMenuSubButton asChild
+                                            isActive={subItem.isActive}
+                                            className="cursor-pointer"
+                      >
+                        <a onClick={() => selectProject(subItem.title)}>
                           <span >{subItem.title}</span>
                         </a>
                       </SidebarMenuSubButton>

@@ -10,6 +10,7 @@ export type ProjectItem = {
   images: string[];
   tags: string[];
   content: string;
+  isActive?: boolean;
 }
 
 export type ProjectGroupItem = {

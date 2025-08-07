@@ -24,10 +24,15 @@ import {
 import {Card} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {BookOpen, Expand} from "lucide-react";
+import {Skeleton} from "@/components/ui/skeleton";
+import {SidebarTrigger} from "@/components/ui/sidebar";
+import {Separator} from "@/components/ui/separator";
 
 export default function ProjectBody({
-  projectItem
+  loading,
+  projectItem,
 } : {
+  loading: boolean,
   projectItem: ProjectItem,
 }) {
 
@@ -43,7 +48,7 @@ export default function ProjectBody({
     updateDark();
 
     const observer = new MutationObserver(updateDark)
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
 
     return () => observer.disconnect();
   }, []);
@@ -67,65 +72,117 @@ export default function ProjectBody({
     return fileName?.split('.')[0];
   }
 
+  if (loading) {
+    return (
+      <div className="grid
+                    grid-rows-[225px_1fr]
+                    lg:grid-rows-[250px_1fr]
+                    gap-0
+                    mt-4
+                    h-full
+                    "
+      >
+        <div className="flex space-y-3 mx-auto justify-self-center">
+          <Skeleton className="h-[250px] w-[250px] lg:w-[400px] rounded-xl mx-2"/>
+          <Skeleton className="
+                      h-[0px] w-[0px]
+                      md:w-[250px] md:h-[250px]
+                      lg:w-[400px]
+                      rounded-xl mx-2"/>
+        </div>
+
+        <div className="mx-auto justify-self-center mt-20">
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px] lg:w-[750px]"/>
+            <Skeleton className="h-4 w-[250px] lg:w-[750px]"/>
+            <Skeleton className="h-4 w-[200px] lg:w-[650px]"/>
+          </div>
+
+        </div>
+      </div>
+    )
+  }
+
   return (
+
     <div className="grid
-                    grid-rows-[250px_auto]
-                    md:grid-rows-[300px_auto]
-                    gap-0"
+                    grid-rows-[48px_225px_1fr]
+                    lg:grid-rows-[48px_250px_1fr]
+                    gap-0
+                    pt-2
+                    h-full
+                    "
     >
-{/*
-      <div className="bg-slate-700" />
-*/}
 
-      <div className="w-full h-full py-2">
-      <Carousel className="w-3/5 md:w-4/5 h-full justify-self-center">
-        <CarouselContent className="w-full h-full max-h-full">
-          {
-            projectItem.images.map((image, i) => (
-              <CarouselItem
-                className="sm:basis-1/2 md:basis-1/3"
-                key={i}
-              >
-                <Card className="relative max-w-[230px] md:max-w-[300px] p-2">
-                  
-                  <img className="aspect-square overflow-hidden object-cover"
-                       src={image} alt={image}/>
+      <div className="flex h-12 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+        <div className="flex items-center gap-2 px-4 ">
+          <SidebarTrigger className="-ml-1" />
 
-                  <Button
-                    className="absolute
-                                top-0 left-0 w-full h-full
-                                opacity-50 md:opacity-0 hover:opacity-50 transition-opacity
-                                "
-                    onClick={() => openDialog(image)}
-                    variant="ghost"
-                    size="icon"
-                  >
-                    <Expand />
-                  </Button>
+          <Separator
+            orientation="vertical"
+            className="mr-2 data-[orientation=vertical]:h-4"
+          />
 
-                </Card>
-              </CarouselItem>
-            ))
-          }
-        </CarouselContent>
+          { projectItem?.title }
 
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+        </div>
       </div>
 
-{/*
-      <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
-        {projectItem.title}
-      </div>
-*/}
+      <div className="w-full py-2">
+        <Carousel className="w-3/5 md:w-4/5 h-full justify-self-center ">
+          <CarouselContent id="CarouselContent" className="w-full h-full ">
+            {
+              projectItem.images.map((image, i) => (
+                <CarouselItem
+                  className="sm:basis-1/2 lg:basis-1/3"
+                  key={i}
+                  id={`CarouselItem_${i}`}
+                >
+                  <Card className="relative h-[205px] lg:h-[235px] p-2">
 
-      <div className="rounded bg-slate-500 p-2">
-        <article className={`markdown-body  ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
-                 dangerouslySetInnerHTML={{__html: html || ''}}/>
+                    <img className="aspect-square
+                                    overflow-hidden
+                                    object-cover
+                                    w-full h-full
+                                    "
+                         src={image} alt={image}/>
+
+                    <Button
+                      className="absolute
+                                  top-0 left-0 w-full h-full
+                                  opacity-50 md:opacity-0 hover:opacity-50 transition-opacity
+                                  "
+                      onClick={() => openDialog(image)}
+                      variant="ghost"
+                      size="icon"
+                    >
+                      <Expand/>
+                    </Button>
+
+                  </Card>
+                </CarouselItem>
+              ))
+            }
+          </CarouselContent>
+
+          <CarouselPrevious/>
+          <CarouselNext/>
+        </Carousel>
+      </div>
+
+      <div className="overflow-auto
+                      bg-slate-200
+                      p-5
+                      rounded-bl-xl
+                      rounded-br-xl
+                      "
+      >
+        <div
+          className={`markdown-body h-full   ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
+          dangerouslySetInnerHTML={{__html: html || ''}}/>
 
         <Dialog modal open={isOpen} onOpenChange={setIsOpen}>
-          <DialogContent >
+          <DialogContent>
             <DialogHeader>
               <DialogTitle>{imageTitle()}</DialogTitle>
             </DialogHeader>
@@ -135,7 +192,6 @@ export default function ProjectBody({
 
           </DialogContent>
         </Dialog>
-
       </div>
     </div>
   )

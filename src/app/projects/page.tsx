@@ -25,17 +25,24 @@ const extractProjectTags = (projects: Project[]) => {
     return []
   }
 
-  const allTags: string[] = [];
+//  const allTags: string[] = [];
+  const allTags: Map<string, number> = new Map<string, number>();
 
-  projects.forEach(item => {
-    item.items.forEach((projectItem) => {
-      for (let i = 0; i < projectItem.tags?.length; i++) {
-        const tag = projectItem.tags[i];
-        if (!allTags.includes(tag)) {
-          allTags.push(tag);
+  projects.forEach(project => {
+    if (project.items) {
+      project.items.forEach((projectItem) => {
+        for (let i = 0; i < projectItem.tags?.length; i++) {
+          const tag = projectItem.tags[i];
+
+          const tagCount = allTags.get(tag);
+          if (tagCount) {
+            allTags.set(tag, tagCount + 1);
+          } else {
+            allTags.set(tag, 1);
+          }
         }
-      }
-    })
+      })
+    }
 
   })
 
@@ -64,10 +71,14 @@ export default function ProjectsList() {
 
   const selectProject = (projectItemTitle: string) => {
     projects.forEach((project) => {
-      for (const item of project.items) {
-        if (item.title === projectItemTitle) {
-          setSelectedProject(item);
-          return;
+      if (project.items) {
+        for (const item of project.items) {
+          if (item.title === projectItemTitle) {
+            item.isActive = true;
+            setSelectedProject(item);
+          } else {
+            item.isActive = false;
+          }
         }
       }
     })
@@ -79,47 +90,51 @@ export default function ProjectsList() {
     });
   }
 
+/*
+  className="grid grid-rows-1 h-svh gap-4 grid-cols-1"
+*/
+
   return (
     <div id="projectRoot"
-         className="grid grid-rows-1 h-full gap-4 grid-cols-1">
+         className="min-h-0 h-full"
+    >
 
     <SidebarProvider
-      className="bg-slate-400">
+      className="bg-slate-400 h-full">
 
 {/*
       className="bg-slate-400 grid sm:grid-cols-1 md:grid-cols-[1fr_4fr] grid-rows-1 gap-0 auto-rows-auto">
 */}
-      <TheProjectSidebar items={projects}
+      <TheProjectSidebar id="TheProjectSidebar"
+                         items={projects}
                          onSelectProject={(value) => selectProject(value)}
+                         className="overflow-hidden p-0 h-full"
       >
+
         <TagSearch
+          loading={projects?.length <= 0}
           projectTags={projectTags}
           selectedTags={selectedTags}
           onTagSelection={(value) => toggleTagSelected(value)}
         />
 
+
       </TheProjectSidebar>
 
-      <SidebarInset>
+      <SidebarInset
+        id="TheSidebarInset"
+      >
 
-        <div className="flex sm:h-14 md:h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-{/*
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
-            />
-*/}
-
-          </div>
+        <div className="h-full shrink-0">
+          {
+            selectedProject ? (
+              <ProjectBody
+                loading={projects?.length <= 0}
+                projectItem={selectedProject}
+              />
+            ) : null
+          }
         </div>
-
-        {
-          selectedProject ? (
-            <ProjectBody projectItem={selectedProject} />
-          ) : null
-        }
 
       </SidebarInset>
     </SidebarProvider>

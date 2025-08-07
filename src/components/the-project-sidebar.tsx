@@ -25,15 +25,18 @@ export function TheProjectSidebar({ items, onSelectProject, children, ...props }
              style={{position: "relative"}}
              {...props}
     >
-      <SidebarHeader>
-        {children}
+
+      <SidebarHeader className="p-4">
+        {`A list of projects I've worked on, some of them are still on-going.`}
       </SidebarHeader>
+
 
       <SidebarContent>
         <NavProjects items={items} onSelectProject={onSelectProject}/>
       </SidebarContent>
 
       <SidebarFooter>
+        {children}
       </SidebarFooter>
 
       <SidebarRail />

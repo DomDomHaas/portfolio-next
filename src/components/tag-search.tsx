@@ -1,12 +1,13 @@
-import {BadgeCheckIcon, Tags} from "lucide-react"
+"use client"
+
+import {BadgeCheckIcon} from "lucide-react"
 import {Badge} from "@/components/ui/badge";
-/*
-import {Tag} from "../../types/projectTypes";
-*/
+import {Skeleton} from "@/components/ui/skeleton";
 
 
 type TagSearchProps = {
-  projectTags: string[];
+  loading: boolean;
+  projectTags: Map<string, number>;
   selectedTags: string[];
   onTagSelection(value: string): void;
 }
@@ -15,35 +16,52 @@ const isSelected = (selectedTags: string[], tagName: string) => {
   return selectedTags?.filter((selectedTag) => selectedTag === tagName).length > 0;
 }
 
-export function TagSearch({ projectTags, selectedTags, onTagSelection } : TagSearchProps) {
+const getTagTitle = (tagEntry: [string, number]) => {
+  return `${tagEntry[0]} (${tagEntry[1]})`;
+}
 
-/*
-  const stuff = ['vue', 'react', 'react-dom'];
-*/
+const minimumTags = (tagMap: Map<string, number>, minimumCount = 2) => {
+  const tagEntries = Array.from(tagMap.entries());
+  const filteredTags = tagEntries.filter((tagEntry) => tagEntry[1] >= minimumCount);
+
+  filteredTags.sort((a, b) => a[1] > b[1] ? -1 : 1);
+
+  return filteredTags;
+}
+
+export function TagSearch({ loading, projectTags, selectedTags, onTagSelection } : TagSearchProps) {
 
   return (
     <div className="flex flex-wrap">
-      <Tags className="mx-1 " />
 
-      <div >
-        {
-          projectTags.map(projectTag => (
-            <Badge className="m-1 py-1"
-                   title={projectTag}
-                   key={projectTag}
-                   onClick={() => onTagSelection(projectTag)}
+    {
+      loading ?
+        (
+          <div className="flex space-y-0 space-x-2">
+            <Skeleton className="h-4 w-[50px]"/>
+            <Skeleton className="h-4 w-[70px]"/>
+            <Skeleton className="h-4 w-[80px]"/>
+          </div>
+        )
+        : (
+          minimumTags(projectTags).map((tagEntry, index) => (
+            <Badge className="cursor-pointer m-1 py-1"
+                   title={getTagTitle(tagEntry)}
+                   key={index}
+                   variant={isSelected(selectedTags, tagEntry[0]) ? 'secondary' : 'outline'}
+                   onClick={() => onTagSelection(tagEntry[0])}
             >
               {
-                isSelected(selectedTags, projectTag) ? (
+                isSelected(selectedTags, tagEntry[0]) ? (
                   <BadgeCheckIcon className="m-0 p-0"/>
                 ) : null
               }
-              { projectTag }
+              { getTagTitle(tagEntry) }
             </Badge>
           ))
-        }
+        )
+    }
 
-      </div>
     </div>
   )
 }
