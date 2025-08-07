@@ -26,24 +26,23 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
   }
 
   return (
-    <div className="grid
-                    grid-rows-[64px_36px]
-                    md:grid-rows-[100px_36px]
-        ">
-      <div id="HeaderTitle">
-        <h1>Portfolio - Dominik Haas</h1>
-      </div>
+    <div>
 
       <NavigationMenu
         id="HeaderNavigation"
-        className="NavigationMenuRoot bg-slate-200 w-full max-w-full">
+        className="NavigationMenuRoot w-full max-w-full">
+
         <NavigationMenuList className="NavigationMenuList">
           {
             entries.map((entry) => (
-              <NavigationMenuItem  key={entry.href}>
-                <NavigationMenuLink href={entry.href}>
+              <NavigationMenuItem key={entry.href}>
+
+                <NavigationMenuLink href={entry.href}
+                                    className="font-medium text-lg"
+                >
                   {entry.title}
                 </NavigationMenuLink>
+
               </NavigationMenuItem>
             ))
           }
@@ -53,11 +52,7 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
                   variant="ghost"
                   size="icon"
           >
-            { isDark ? (
-              <Moon />
-                ) : (
-              <Sun />
-            )}
+            { isDark ? ( <Moon /> ) : ( <Sun /> )}
           </Button>
 
         </NavigationMenuList>

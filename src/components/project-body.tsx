@@ -108,6 +108,11 @@ export default function ProjectBody({
     <div className="grid
                     grid-rows-[48px_225px_1fr]
                     lg:grid-rows-[48px_250px_1fr]
+                    bg-slate-100/70
+                    border-slate-100
+                    dark:bg-slate-500/60
+                    dark:border-slate-500
+                    rounded-xl
                     gap-0
                     pt-2
                     h-full
@@ -129,7 +134,7 @@ export default function ProjectBody({
       </div>
 
       <div className="w-full py-2">
-        <Carousel className="w-3/5 md:w-4/5 h-full justify-self-center ">
+        <Carousel className="w-3/5 md:w-4/5 h-full justify-self-center">
           <CarouselContent id="CarouselContent" className="w-full h-full ">
             {
               projectItem.images.map((image, i) => (
@@ -138,7 +143,7 @@ export default function ProjectBody({
                   key={i}
                   id={`CarouselItem_${i}`}
                 >
-                  <Card className="relative h-[205px] lg:h-[235px] p-2">
+                  <Card className="relative h-[200px] lg:h-[230px] p-2">
 
                     <img className="aspect-square
                                     overflow-hidden
@@ -165,16 +170,18 @@ export default function ProjectBody({
             }
           </CarouselContent>
 
-          <CarouselPrevious/>
-          <CarouselNext/>
+          <CarouselPrevious className="dark:bg-slate-500" />
+          <CarouselNext className="dark:bg-slate-500" />
         </Carousel>
       </div>
 
       <div className="overflow-auto
-                      bg-slate-200
+                      bg-slate-100/70
+                      border-slate-100
+                      dark:bg-slate-500/60
+                      dark:border-slate-500
                       p-5
-                      rounded-bl-xl
-                      rounded-br-xl
+                      rounded-b-xl
                       "
       >
         <div

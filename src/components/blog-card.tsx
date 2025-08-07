@@ -16,7 +16,14 @@ export default function BlogCard({
   imgClassName,
 } : BlogCardProps) {
   return(
-    <Card id="BlogCard" className="grid gap-0 py-0">
+    <Card id="BlogCard"
+          className="grid gap-0 py-0
+                     bg-slate-100/70
+                     border-slate-100
+                     dark:bg-slate-500/60
+                     dark:border-slate-500
+                     rounded-xl
+          ">
 
       {
         img ? (

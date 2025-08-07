@@ -9,7 +9,11 @@ export default function BlogCardBody({
  content,
 } : BlogPost) {
   return (
-    <div id="BlogCardBody" className="grid grid-rows-[auto_auto_36px] h-full p-4 gap-2">
+    <div id="BlogCardBody"
+         className="
+           grid grid-rows-[auto_auto_36px]
+           h-full p-4 gap-2
+         ">
 
       <div className="text-base md:text-lg leading-none font-semibold">
         {title}

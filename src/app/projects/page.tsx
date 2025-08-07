@@ -91,11 +91,11 @@ export default function ProjectsList() {
 
   return (
     <div id="projectRoot"
-         className="min-h-0 h-full"
+         className="bg-transparent min-h-0 h-full"
     >
 
     <SidebarProvider
-      className="bg-slate-400 h-full">
+      className="bg-transparent h-full">
 
 {/*
       className="bg-slate-400 grid sm:grid-cols-1 md:grid-cols-[1fr_4fr] grid-rows-1 gap-0 auto-rows-auto">
@@ -103,7 +103,10 @@ export default function ProjectsList() {
       <TheProjectSidebar id="TheProjectSidebar"
                          items={projects}
                          onSelectProject={(value) => selectProject(value)}
-                         className="overflow-hidden p-0 h-full"
+                         className="
+                         bg-transparent overflow-hidden
+                         rounded-bl-xl
+                         p-0 h-full"
       >
 
         <TagSearch
@@ -118,9 +121,10 @@ export default function ProjectsList() {
 
       <SidebarInset
         id="TheSidebarInset"
+        className="bg-slate-200/70"
       >
 
-        <div className="h-full shrink-0">
+        <div className="bg-transparent h-full shrink-0">
           {
             selectedProject ? (
               <ProjectBody
