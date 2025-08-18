@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import {Anaheim, Geist, Geist_Mono} from "next/font/google";
+import {Raleway} from "next/font/google";
 import "./globals.css";
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const raleway = Raleway({
+  weight: 'variable',
+  variable: "--font-raleway",
   subsets: ["latin"],
+  preload: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
-const anaheim = Anaheim({
-  variable: "--font-anaheim-sans",
-  subsets: ["latin"],
-});
 
 const NavEntries : NavEntry[] = [
   {
@@ -52,28 +46,31 @@ export default function RootLayout({
     <body
       className={`
         bg-[url('/images/bg.jpg')] bg-cover bg-center bg-no-repeat
-        backdrop-blur-xl
+        backdrop-blur-3xl
         h-screen overflow-hidden
-        ${geistSans.variable} ${geistMono.variable} antialiased`}
+        ${raleway.className}
+        antialiased`}
     >
 {/*
 
-      className={`${anaheim.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 min-h-screen p-8 pb-20 gap-16 sm:p-20
 sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 */}
 
     <div id="rootGrid"
       className="grid
-                 grid-rows-[100px_10fr_1fr]
-                 md:grid-rows-[136px_10fr_1fr]
+                 grid-rows-[64px_10fr_64px]
                  grid-cols-1
                  lg:grid-cols-[1fr_14fr_1fr]
+                 xl:grid-cols-[3fr_12fr_3fr]
                  lg:[grid-template-areas:'.nav.''.main.''.foot.']
+                 xl:[grid-template-areas:'.nav.''.main.''.foot.']
                  h-screen
                  font-[family-name:var(--font-geist-sans)]
-                 bg-slate-100/40 dark:bg-slate-600/40
-                 pt-2
+                 bg-slate-100/50 dark:bg-slate-600/50
+                 p-2
+                 md:pt-2
                  "
     >
 
@@ -84,6 +81,7 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
           dark:bg-slate-500/40
           lg:[grid-area:nav]
           rounded-t-md
+          border-b-1
           noise
         "
       >
@@ -101,7 +99,10 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
           dark:bg-slate-500/40
           noise
         "
-        style={{ scrollbarWidth: 'thin' }}
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'white black',
+        }}
       >
         {children}
       </main>
