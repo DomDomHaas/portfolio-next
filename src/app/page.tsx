@@ -1,7 +1,9 @@
+'use client'
+
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import BlogCard from "@/components/project-card";
-import ProjectCard from "@/components/project-card";
+import BlogCard from "@/components/blog-card-body";
+import OverviewCard from "@/components/overview-card";
 
 export default function HomePage() {
   return (
@@ -18,12 +20,12 @@ export default function HomePage() {
           Crafting intuitive<br/>
           <span className="text-white dark:text-black font-light"> User Experiences</span>
           <br/>by balancing<br/>
-          <span className={`text-white dark:text-black font-light`}>Engineering & Design</span>
+          <span className={`text-white dark:text-black font-light`}>Design & Engineering</span>
         </div>
 
         <div className="hidden md:inline text-5xl">
           Crafting intuitive <span className="text-white dark:text-black font-light"> User Experiences</span>
-          <br/>by balancing <span className={`text-white dark:text-black font-light`}>Engineering & Design</span>
+          <br/>by balancing <span className={`text-white dark:text-black font-light`}>Design & Engineering</span>
         </div>
 
       </div>
@@ -32,6 +34,7 @@ export default function HomePage() {
                       grid-cols-1
                       md:grid-cols-[1fr_1fr_1fr]
                       lg:grid-cols-[1fr_2fr_1fr]
+                      gap-8
                       "
       >
 
@@ -39,19 +42,28 @@ export default function HomePage() {
 
           <div className="flex flex-col h-full">
             <div className="h-1/2">
-              I've worked in different software environments web application, fat client and games.
+              Hello, I'm Dominik Haas a Software Engineer with Game Design experience. <br/>
+              I worked on desktop & web apps to complex multi-tier client-server-applications, to mobile-apps and 2D / 3D Games.
+              In prototyping and high quality environments.
+              I can take care of the full software lifecycle from design stage to deployment and lead a team in concerns of software engineering.
             </div>
 
             <div className="h-1/2">
 
+{/*
               <Button asChild>
                 <Link href="projects">All Projects</Link>
               </Button>
+*/}
+
+              <OverviewCard
+              />
+
             </div>
           </div>
         </div>
 
-        <div className="flex sm:order-1 p-4">
+        <div className="flex sm:order-1">
           <div className="mx-auto py-4 ">
 {/*
 relative h-[350px] w-[250px]
@@ -64,6 +76,8 @@ relative h-[350px] w-[250px]
                          border-1
                          border-white
                          dark:border-black
+                         hover:border-black
+                         transition-all
                          p-4
                          object-cover object-center"
               src="/images/dominikhaasartho_small.webp"
@@ -92,8 +106,6 @@ relative h-[350px] w-[250px]
               Side-Projects
               </div>
               <div>
-                <ProjectCard
-                  />
               </div>
             </div>
 

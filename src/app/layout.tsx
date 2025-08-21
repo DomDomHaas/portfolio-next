@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+'use client'
+
 import {Raleway} from "next/font/google";
 import "./globals.css";
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
@@ -29,11 +30,6 @@ const NavEntries : NavEntry[] = [
 ]
 
 
-export const metadata: Metadata = {
-  title: "Portfolio - Dominik Haas",
-  description: "Professional work of Dominik Haas",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -60,7 +56,7 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 
     <div id="rootGrid"
       className="grid
-                 grid-rows-[64px_10fr_64px]
+                 grid-rows-[64px_10fr_32px]
                  grid-cols-1
                  lg:grid-cols-[1fr_14fr_1fr]
                  xl:grid-cols-[3fr_12fr_3fr]
@@ -80,7 +76,7 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
           bg-slate-300/40
           dark:bg-slate-500/40
           lg:[grid-area:nav]
-          rounded-t-md
+          rounded-t-xl
           border-b-1
           noise
         "
@@ -93,11 +89,12 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
         className="
           h-full
           overflow-hidden
-          rounded-b-md
+          rounded-b-xl
           lg:[grid-area:main]
           bg-slate-300/40
           dark:bg-slate-500/40
           noise
+          pb-4
         "
         style={{
           scrollbarWidth: 'thin',
