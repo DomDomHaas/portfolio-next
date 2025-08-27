@@ -47,21 +47,11 @@ export default function RootLayout({
         ${raleway.className}
         antialiased`}
     >
-{/*
-
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-min-h-screen p-8 pb-20 gap-16 sm:p-20
-sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
-*/}
 
     <div id="rootGrid"
       className="grid
-                 grid-rows-[64px_10fr_32px]
+                 grid-rows-[64px_auto_32px]
                  grid-cols-1
-                 lg:grid-cols-[1fr_14fr_1fr]
-                 xl:grid-cols-[3fr_12fr_3fr]
-                 lg:[grid-template-areas:'.nav.''.main.''.foot.']
-                 xl:[grid-template-areas:'.nav.''.main.''.foot.']
                  h-screen
                  font-[family-name:var(--font-geist-sans)]
                  bg-slate-100/50 dark:bg-slate-600/50
@@ -75,7 +65,9 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
         className="
           bg-slate-300/40
           dark:bg-slate-500/40
-          lg:[grid-area:nav]
+          mx-auto
+          w-full
+          lg:w-[1024px]
           rounded-t-xl
           border-b-1
           noise
@@ -90,7 +82,9 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
           h-full
           overflow-hidden
           rounded-b-xl
-          lg:[grid-area:main]
+          mx-auto
+          w-full
+          lg:w-[1024px]
           bg-slate-300/40
           dark:bg-slate-500/40
           noise
@@ -108,8 +102,6 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
 
       <footer
         id="rootFoot"
-        className="lg:[grid-area:foot]
-        "
       >
 
       </footer>
