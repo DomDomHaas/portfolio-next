@@ -38,7 +38,12 @@ These features of the AnimatedSprite are a great fit for me because I wanted to 
 
 ![Attack animation](https://img.itch.zone/aW1nLzEzNjg4NzcxLmdpZg==/original/b0kmR8.gif)
 
-This example shows the actual hit of the whole attack animations are happening only in a few frames and only then collisions for an attack can be triggered. I've tried counting the frames and timing the collision with a frameTimer kinda like this:
+This example shows the actual hit of the whole attack animations are happening only in a few frames and only then collisions for an attack can be triggered.
+And with this image, it's only a single frame:
+
+![Attack animation](https://img.itch.zone/aW1nLzIyNDY2OTMwLnBuZw==/original/F9beFo.png)
+
+I've tried counting the frames and timing the collision with a frameTimer kinda like this:
 
 <pre><code class="language-lua">
 function enableCollisionWithReset(player, initialFramesDelay, framesUntilReset)

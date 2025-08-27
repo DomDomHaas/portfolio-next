@@ -2,7 +2,7 @@
 
 ## Thank You Very Much
 
-First of all, I want to thank every one who downloaded and played Duels of Shadows.
+First of all, I want to thank everyone who downloaded and played Duels of Shadows.
 
 Here are the statistics for February: 
 

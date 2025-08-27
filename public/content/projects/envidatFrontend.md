@@ -1,7 +1,6 @@
-# DevBlog: Start of a Boss Rusher Game?
+# Senior Software Engineer at WSL
 
-## TL;DR
-Is a game with only boss fights fun and can it scale?
+Over the years working on EnviDat at the WSL I've took on more and more responsibility.
 
 ## Do you love boss fights?
 I certainly do! Last Summer I've discovered the BossRush Game Jam, it was clear that I've wanted to participate, only question was what am I going to do?

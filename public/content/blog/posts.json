@@ -1,9 +1,23 @@
 {
   "blogPosts": [
     {
+      "title": "Character Reveal: Samurai",
+      "img": "/images/blog/samurai.gif",
+      "description": "Reveal of the 2nd character and progress on for Duels of Shadows!",
+      "content": "frameBasedCollision",
+      "date": "26.08.2025"
+    },
+    {
+      "title": "Frame-Based Collisions",
+      "img": "/images/blog/framebased_collision.png",
+      "description": "Detailed post about the frame-based triggering of collision based on the AnimateSprite library.",
+      "content": "frameBasedCollision",
+      "date": "03.08.2025"
+    },
+    {
       "title": "DevBlog: Aftermath of the Boss Rush Game Jam 2025",
       "img": "/images/blog/DuelOfShadowsStats.png",
-      "description": "Thank every one who downloaded and played Duels of Shadows!",
+      "description": "Thank everyone who downloaded and played Duels of Shadows!",
       "content": "aftermathBossRushJam",
       "date": "03.05.2025"
     },
