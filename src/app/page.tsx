@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import BlogCard from "@/components/blog-card-body";
 import OverviewCard from "@/components/overview-card";
+import MosaicOverviewCard from "@/components/mosaic-overview-card";
 
 export default function HomePage() {
   return (
@@ -80,7 +81,7 @@ relative h-[350px] w-[250px]
               src="/images/dominikhaasartho_small.webp"
               alt="Portrait of Dominik Haas Artho"/>
 
-{/*
+            {/*
             <img
               className="z-0 h-[350px] w-[250px]
                          rounded-[125px]
@@ -98,25 +99,29 @@ relative h-[350px] w-[250px]
 
         <div className="sm:order-3 ">
           <div className="flex flex-col h-full">
+{/*
             <div className="h-1/2">
               <div>
-              Side-Projects
+                Side-Projects
               </div>
               <div>
               </div>
             </div>
+*/}
 
             <div className="h-1/2">
-              <div>
-              Latest Blog Post
-              </div>
 
-{/*
+              {/*
               <Button asChild>
                 <Link href="blog">All Blog Posts</Link>
               </Button>
 */}
 
+              <MosaicOverviewCard
+                title="Latest Blog Posts"
+              />
+
+{/*
               <BlogCard
                 title="Bla bla"
                 img=""
@@ -130,6 +135,7 @@ relative h-[350px] w-[250px]
                 </Button>
 
               </BlogCard>
+*/}
             </div>
           </div>
         </div>
