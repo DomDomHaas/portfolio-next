@@ -2,6 +2,7 @@
 
 import {Raleway} from "next/font/google";
 import "./globals.css";
+import '@/app/github-markdown.css';
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
 
 
@@ -80,7 +81,7 @@ export default function RootLayout({
         id="rootMain"
         className="
           h-full
-          overflow-hidden
+          overflow-auto
           rounded-b-xl
           mx-auto
           w-full
@@ -90,13 +91,11 @@ export default function RootLayout({
           noise
           pb-4
         "
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'white transparent',
+        }}
       >
-{/*
-      style={{
-        scrollbarWidth: 'thin',
-        scrollbarColor: 'white black',
-      }}
-*/}
         {children}
       </main>
 

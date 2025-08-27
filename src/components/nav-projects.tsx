@@ -85,8 +85,8 @@ export function NavProjects(
             <CollapsibleContent>
               <SidebarMenuSub>
                 {
-                  subSelectItems(item?.items, searchText).map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
+                  subSelectItems(item?.items, searchText).map((subItem, index) => (
+                    <SidebarMenuSubItem key={`${subItem.title}_${index}`}>
                       <SidebarMenuSubButton asChild
                                             isActive={subItem.isActive}
                                             className="cursor-pointer"

@@ -5,10 +5,39 @@ import Link from "next/link";
 import BlogCard from "@/components/blog-card-body";
 import OverviewCard from "@/components/overview-card";
 import MosaicOverviewCard from "@/components/mosaic-overview-card";
+import {useEffect, useState} from "react";
+import {Project, ProjectItem} from "../../types/projectTypes";
+import {loadProjects} from "@/app/projects/projectsApi";
+import {BlogPost} from "../../types/blogTypes";
+import {loadPosts} from "@/app/blog/blogApi";
+
+const previews = [
+  { title: 'bla', img: '/images/projects/EnviDat_Flyer.jpg'},
+  { title: 'bli', img: '/images/projects/EnviDat_logo_128.png'},
+  { title: 'blu', img: '/images/projects/EnviDat_Flyer.jpg'},
+]
+
 
 export default function HomePage() {
+
+  const [previews, setPreviews] = useState<ProjectItem[]>([]);
+  const [blogPreviews, setBlogPreviews] = useState<BlogPost[]>([]);
+
+  // on mount
+  useEffect(() => {
+    loadProjects().then((projects) => {
+      const enviDatProjects = projects[0].items;
+      setPreviews(enviDatProjects.slice(0, 3));
+    });
+
+    loadPosts().then((posts) => {
+      setBlogPreviews(posts.slice(0, 9));
+    })
+  }, []);
+
+
   return (
-    <div className={`h-full overflow-auto
+    <div className={`h-full
                     grid-rows-4
                     grid-cols-1
                     gap-4
@@ -55,7 +84,13 @@ export default function HomePage() {
             <div className="">
 
               <OverviewCard
-              />
+                title="Recent Projects"
+                previewProjects={previews}
+              >
+                <Button asChild>
+                  <Link href="projects">View Projects</Link>
+                </Button>
+              </OverviewCard>
 
             </div>
           </div>
@@ -111,7 +146,7 @@ relative h-[350px] w-[250px]
 
             <div className="h-1/2">
 
-              {/*
+{/*
               <Button asChild>
                 <Link href="blog">All Blog Posts</Link>
               </Button>
@@ -119,23 +154,13 @@ relative h-[350px] w-[250px]
 
               <MosaicOverviewCard
                 title="Latest Blog Posts"
-              />
-
-{/*
-              <BlogCard
-                title="Bla bla"
-                img=""
-                description="some stuff"
-                content="">
-
-                <Button asChild className="shadow-md"
-                        variant="outline"
-                >
-                  <Link href="blog">All Blog Posts</Link>
+                blogPosts={blogPreviews}
+              >
+                <Button asChild>
+                  <Link href="blog">Read Blog</Link>
                 </Button>
+              </MosaicOverviewCard>
 
-              </BlogCard>
-*/}
             </div>
           </div>
         </div>

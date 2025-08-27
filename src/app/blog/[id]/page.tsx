@@ -4,7 +4,6 @@ import {useParams, useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
 import {loadPostContent, loadPostHeadImg } from "@/app/blog/blogApi";
 
-import '@/app/github-markdown.css'
 import {Button} from "@/components/ui/button";
 import {CircleX} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
@@ -51,7 +50,7 @@ export default function BlogPost() {
 
 
   return (
-    <div className="min-h-0 h-full p-2 mb-2 relative">
+    <div className="min-h-0 h-full p-2 relative">
 
       <Button className="absolute right-4 md:right-7 top-4
                          cursor-pointer shadow-md
@@ -67,9 +66,14 @@ export default function BlogPost() {
                       gap-2
                       h-full
                       overflow-auto
-                      bg-slate-300
+                      bg-slate-200/70
                       m-1 p-2 rounded-xl
-                      ">
+                      "
+           style={{
+             scrollbarWidth: 'thin',
+             scrollbarColor: 'white transparent',
+           }}
+      >
 
         { html ? (
           <>

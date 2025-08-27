@@ -106,9 +106,8 @@ export default function ProjectBody({
   return (
 
     <div className="grid
-                    grid-rows-[48px_225px_1fr]
-                    lg:grid-rows-[48px_250px_1fr]
-                    bg-slate-100/70
+                    grid-rows-[48px_185px_1fr]
+                    bg-slate-200/70
                     border-slate-100
                     dark:bg-slate-500/60
                     dark:border-slate-500
@@ -119,7 +118,11 @@ export default function ProjectBody({
                     "
     >
 
-      <div className="flex h-12 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+      <div className="flex h-12
+                      shrink-0 items-center gap-2
+                      transition-[width,height] ease-linear
+                      group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
+      >
         <div className="flex items-center gap-2 px-4 ">
           <SidebarTrigger className="-ml-1" />
 
@@ -133,56 +136,62 @@ export default function ProjectBody({
         </div>
       </div>
 
-      <div className="w-full py-2">
-        <Carousel className="w-3/5 md:w-4/5 h-full justify-self-center">
-          <CarouselContent id="CarouselContent" className="w-full h-full ">
-            {
-              projectItem.images.map((image, i) => (
-                <CarouselItem
-                  className="sm:basis-1/2 lg:basis-1/3"
-                  key={i}
-                  id={`CarouselItem_${i}`}
-                >
-                  <Card className="relative h-[200px] lg:h-[230px] p-2">
+      <Carousel className="h-full w-3/5 md:w-4/5 justify-self-center">
+        <CarouselContent id="CarouselContent"
+                         className="w-full h-full py-2">
+          {
+            projectItem.images.map((image, i) => (
+              <CarouselItem
+                className="basis-1/1 md:basis-1/2 lg:basis-1/3"
+                key={i}
+                id={`CarouselItem_${i}`}
+              >
+                <Card className="h-full relative p-0">
 
-                    <img className="aspect-square
-                                    overflow-hidden
-                                    object-cover
-                                    w-full h-full
-                                    "
-                         src={image} alt={image}/>
-
-                    <Button
-                      className="absolute
-                                  top-0 left-0 w-full h-full
-                                  opacity-50 md:opacity-0 hover:opacity-50 transition-opacity
+                  <img className="aspect-square
+                                  rounded-xl
+                                  overflow-hidden
+                                  object-contain
+                                  w-full h-full
                                   "
-                      onClick={() => openDialog(image)}
-                      variant="ghost"
-                      size="icon"
-                    >
-                      <Expand/>
-                    </Button>
+                       src={image} alt={image}/>
 
-                  </Card>
-                </CarouselItem>
-              ))
-            }
-          </CarouselContent>
+                  <Button
+                    className="absolute
+                                  top-0 left-0 w-full h-full
+                                  opacity-50 md:opacity-0
+                                  hover:opacity-50
+                                  transition-opacity
+                                  "
+                    onClick={() => openDialog(image)}
+                    variant="ghost"
+                    size="icon"
+                  >
+                    <Expand/>
+                  </Button>
 
-          <CarouselPrevious className="dark:bg-slate-500" />
-          <CarouselNext className="dark:bg-slate-500" />
-        </Carousel>
-      </div>
+                </Card>
+              </CarouselItem>
+            ))
+          }
+        </CarouselContent>
+
+        <CarouselPrevious className="dark:bg-slate-500" />
+        <CarouselNext className="dark:bg-slate-500" />
+      </Carousel>
 
       <div className="overflow-auto
-                      bg-slate-100/70
+                      bg-slate-200/70
                       border-slate-100
                       dark:bg-slate-500/60
                       dark:border-slate-500
                       p-5
                       rounded-b-xl
                       "
+           style={{
+             scrollbarWidth: 'thin',
+             scrollbarColor: 'white transparent',
+           }}
       >
         <div
           className={`markdown-body h-full   ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}

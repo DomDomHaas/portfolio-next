@@ -7,11 +7,12 @@ export default function BlogCardBody({
  title,
  description,
  content,
-} : BlogPost) {
+ children,
+} : BlogPost & { children?: object }) {
   return (
     <div id="BlogCardBody"
          className="
-           grid grid-rows-[auto_auto_36px]
+           grid grid-rows-[42px_auto_36px]
            h-full p-4 gap-2
          ">
 
@@ -19,7 +20,7 @@ export default function BlogCardBody({
         {title}
       </div>
 
-      <div className="text-xs md:text-base">
+      <div className="text-base">
         {description}
       </div>
 
@@ -31,6 +32,8 @@ export default function BlogCardBody({
             <NotebookText /> Read
           </Link>
         </Button>
+
+        {children}
       </div>
 
     </div>

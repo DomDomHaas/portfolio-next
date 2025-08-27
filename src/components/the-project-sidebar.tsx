@@ -36,7 +36,12 @@ export function TheProjectSidebar({ items, onSelectProject, className, children,
       </SidebarHeader>
 
 
-      <SidebarContent>
+      <SidebarContent
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'white transparent',
+        }}
+      >
         <NavProjects items={items} onSelectProject={onSelectProject}/>
       </SidebarContent>
 

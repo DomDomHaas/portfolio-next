@@ -6,7 +6,7 @@ type BlogCardProps = BlogPost & {
   imgClassName?: string;
 }
 
-const defaultImgClassName = "rounded-t-xl max-h-full w-full object-cover";
+const defaultImgClassName = "rounded-t-xl w-full object-cover";
 
 export default function BlogCard({
   title,
@@ -17,21 +17,26 @@ export default function BlogCard({
 } : BlogCardProps) {
   return(
     <Card id="BlogCard"
-          className="grid gap-0 py-0
-                     bg-slate-100/70
+          className="grid
+                     grid-rows-[180px_220px]
+                     gap-0 py-0
+                     bg-slate-200/70
                      border-slate-100
                      dark:bg-slate-500/60
                      dark:border-slate-500
+                     h-[400px]
                      rounded-xl
           ">
 
-      {
-        img ? (
-          <img className={imgClassName ? imgClassName + defaultImgClassName : defaultImgClassName}
-               src={img}
-               alt={title}/>
-        ) : null
-      }
+      <div className="h-full overflow-hidden">
+        {
+          img ? (
+            <img className={imgClassName ? imgClassName + defaultImgClassName : defaultImgClassName}
+                 src={img}
+                 alt={title}/>
+          ) : null
+        }
+      </div>
 
       <BlogCardBody title={title} img={img} description={description} content={content} />
 
