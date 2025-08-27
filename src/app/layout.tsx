@@ -96,11 +96,13 @@ sm:grid-cols-1 sm:grid-rows-[1fr_6fr_1fr] sm:gap-0
           noise
           pb-4
         "
-        style={{
-          scrollbarWidth: 'thin',
-          scrollbarColor: 'white black',
-        }}
       >
+{/*
+      style={{
+        scrollbarWidth: 'thin',
+        scrollbarColor: 'white black',
+      }}
+*/}
         {children}
       </main>
 
