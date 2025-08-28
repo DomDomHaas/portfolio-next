@@ -104,7 +104,7 @@ export default function ProjectsList() {
                          items={projects}
                          onSelectProject={(value) => selectProject(value)}
                          className="
-                         bg-transparent overflow-hidden
+                         overflow-hidden
                          rounded-bl-xl
                          p-0 h-full"
       >

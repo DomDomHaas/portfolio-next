@@ -24,19 +24,23 @@ export function TheProjectSidebar({ items, onSelectProject, className, children,
   return (
     <Sidebar variant="inset"
              collapsible="icon"
-             className={cn(
-               className
-             )}
+             className={cn(className)}
              style={{position: "relative"}}
              {...props}
     >
 
-      <SidebarHeader className="p-4 pt-2">
+      <SidebarHeader className="
+                         bg-slate-100
+                         md:bg-transparent
+                          p-4 pt-2">
         {`A list of projects I've worked on, some of them are still on-going.`}
       </SidebarHeader>
 
 
       <SidebarContent
+        className="bg-slate-100
+                   md:bg-transparent
+                  "
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'white transparent',
@@ -45,7 +49,11 @@ export function TheProjectSidebar({ items, onSelectProject, className, children,
         <NavProjects items={items} onSelectProject={onSelectProject}/>
       </SidebarContent>
 
-      <SidebarFooter>
+      <SidebarFooter
+        className="bg-slate-100
+                   md:bg-transparent
+                  "
+      >
         {children}
       </SidebarFooter>
 

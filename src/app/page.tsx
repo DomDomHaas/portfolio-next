@@ -66,7 +66,7 @@ export default function HomePage() {
            className="py-4 md:py-8">
 
         <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/4 md:h-full">
+            <div className="ml-2 w-full md:w-1/4 md:h-full">
               <ProfileImage/>
             </div>
 
