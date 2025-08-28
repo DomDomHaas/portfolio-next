@@ -42,7 +42,8 @@ export default function RootLayout({
     >
     <body
       className={`
-        bg-[url('/images/bg.jpg')] bg-cover bg-center bg-no-repeat
+        bg-[url('/images/deru_triangle_small.webp')]
+        bg-contain bg-center bg-repeat
         backdrop-blur-3xl
         h-screen overflow-hidden
         ${raleway.className}
