@@ -10,6 +10,7 @@ import {Project, ProjectItem} from "../../types/projectTypes";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {BlogPost} from "../../types/blogTypes";
 import {loadPosts} from "@/app/blog/blogApi";
+import ProfileImage from "@/components/profile-image";
 
 const previews = [
   { title: 'bla', img: '/images/projects/EnviDat_Flyer.jpg'},
@@ -38,13 +39,14 @@ export default function HomePage() {
 
   return (
     <div className={`h-full
-                    grid-rows-4
+                    grid-rows-3
                     grid-cols-1
                     gap-4
                     p-4
                     `}>
 
-      <div className="py-4 pt-0 "
+      <div id="row-1"
+           className="py-4 pt-0 "
       >
         <div className="inline md:hidden text-3xl text-center">
           Crafting intuitive<br/>
@@ -60,24 +62,50 @@ export default function HomePage() {
 
       </div>
 
-      <div className="py-4 md:pb-8">
-        <div className="text-lg">Hello and Welcome. I'm Dominik Haas an Application Engineer. </div>
-        <div>
-        2005 I've started with my professional Software Engineering journey. Since then I love crating interactive, digital experiences. <br/>
-        With a background in Game Design I have a eye for emotional design and design in general.
-        </div>
+      <div id="row-2"
+           className="py-4 md:py-8">
+
+        <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-1/4 md:h-full">
+              <ProfileImage/>
+            </div>
+
+            <div className="w-full mt-4 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
+              <div className="text-lg">Welcome and Thanks for the visit.</div>
+              <div className="mt-2">
+                I'm Dominik Haas an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
+                interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.
+              </div>
+
+              <div className="mt-4">
+                <div className="text-lg">Work Experience</div>
+                <div className="mt-2">
+                I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D
+                Games.
+                I take care of the full software lifecycle from design stage to deployment. I've lead teams as senior
+                engineer in all concerns of
+                software engineering and design.
+                I enjoy rapid prototyping as much as working in high quality environments with solid architectures.
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
       </div>
 
 
-      <div className="grid
+      <div id="row-3"
+           className="grid
                       grid-cols-1
-                      md:grid-cols-[1fr_1fr_1fr]
-                      lg:grid-cols-[1fr_2fr_1fr]
-                      gap-8
+                      md:grid-cols-[3fr_2fr]
+                      gap-4
+                      pb-4 md:pb-8
                       "
       >
 
-        <div className="sm:order-2 ">
+        <div className="">
 
           <div className="flex flex-col h-full">
 
@@ -87,8 +115,8 @@ export default function HomePage() {
                 title="Recent Projects"
                 previewProjects={previews}
               >
-                <Button asChild>
-                  <Link href="projects">View Projects</Link>
+              <Button asChild>
+                <Link href="projects">View Projects</Link>
                 </Button>
               </OverviewCard>
 
@@ -96,45 +124,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex sm:order-1">
-          <div className="mx-auto py-4 ">
-            {/*
-relative h-[350px] w-[250px]
-              className="hover:hidden z-10 h-[350px] w-[250px]
-                         absolute
-*/}
-            <img
-              className="z-10 h-[325px] w-[250px]
-                         rounded-[125px]
-                         border-1
-                         border-white
-                         dark:border-black
-                         hover:border-black
-                         transition-all
-                         p-4
-                         object-cover object-center"
-              src="/images/dominikhaasartho_small.webp"
-              alt="Portrait of Dominik Haas Artho"/>
 
-            {/*
-            <img
-              className="z-0 h-[350px] w-[250px]
-                         rounded-[125px]
-                         absolute
-                         object-cover object-center"
-                 src="/images/dominikhaasartho_small_2.webp"
-                 alt="Portrait of Dominik Haas Artho" />
-*/}
-
-          </div>
-
-          <div>
-          </div>
-        </div>
-
-        <div className="sm:order-3 ">
+        <div className="">
           <div className="flex flex-col h-full">
-{/*
+            {/*
             <div className="h-1/2">
               <div>
                 Side-Projects
@@ -146,7 +139,7 @@ relative h-[350px] w-[250px]
 
             <div className="h-1/2">
 
-{/*
+              {/*
               <Button asChild>
                 <Link href="blog">All Blog Posts</Link>
               </Button>
@@ -166,30 +159,14 @@ relative h-[350px] w-[250px]
         </div>
       </div>
 
-      <div className="py-4">
+{/*
+      <div id="row-4"
+           className="py-4">
         <div className="text-lg">Work Experience</div>
         I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D Games.
         I take care of the full software lifecycle from design stage to deployment. I've lead teams as senior engineer in all concerns of
         software engineering and design.
         I enjoy rapid prototyping as much as working in high quality environments with solid architectures.
-      </div>
-
-{/*
-      <div className="grid
-                      grid-cols-1
-                      md:grid-cols-[1fr_1fr_1fr]
-                      "
-      >
-        <div>
-          Crafting interactive, digital experiences since 2005 with passion and joy.
-
-        </div>
-        <div>
-          About <br/>
-          asdf<br/>
-          as<br/>
-        </div>
-        <div></div>
       </div>
 */}
 
