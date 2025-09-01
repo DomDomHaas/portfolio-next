@@ -13,13 +13,6 @@ export type ProjectItem = {
   isActive?: boolean;
 }
 
-export type ProjectGroupItem = {
-  title: string;
-  url: string;
-  icon?: LucideIcon;
-  isActive?: boolean;
-  items?: ProjectItem[];
-}
 
 export type Project = {
   title: string;

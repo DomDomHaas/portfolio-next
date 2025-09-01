@@ -8,7 +8,7 @@ export default function BlogCardBody({
  description,
  content,
  children,
-} : BlogPost & { children?: object }) {
+} : BlogPost & { children?: React.ReactNode; }) {
   return (
     <div id="BlogCardBody"
          className="

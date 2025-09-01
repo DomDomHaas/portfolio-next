@@ -15,12 +15,11 @@ import ProjectBody from "@/components/project-body";
 
 
 const extractProjectTags = (projects: Project[]) => {
-  if (!projects) {
-    return []
-  }
-
-//  const allTags: string[] = [];
   const allTags: Map<string, number> = new Map<string, number>();
+
+  if (!projects) {
+    return allTags;
+  }
 
   projects.forEach(project => {
     if (project.items) {
@@ -47,7 +46,7 @@ export default function ProjectsList() {
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [selectedProject, setSelectedProject] = useState<ProjectItem>(null)
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | undefined>(undefined)
 
   // on mount
   useEffect(() => {
@@ -101,7 +100,7 @@ export default function ProjectsList() {
       className="bg-slate-400 grid sm:grid-cols-1 md:grid-cols-[1fr_4fr] grid-rows-1 gap-0 auto-rows-auto">
 */}
       <TheProjectSidebar id="TheProjectSidebar"
-                         items={projects}
+                         projects={projects}
                          onSelectProject={(value) => selectProject(value)}
                          className="
                          overflow-hidden
