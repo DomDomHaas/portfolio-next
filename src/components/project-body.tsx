@@ -58,19 +58,22 @@ export default function ProjectBody({
   }, [projectItem])
 
   const [isOpen, setIsOpen] = useState(false)
-  const [dialogImage, setDialogImage] = useState('')
+  const [dialogImages, setDialogImages] = useState(projectItem.images || [])
 
 
   const openDialog = (image: string) => {
     setIsOpen(true);
-    setDialogImage(image);
+
+    const currentIndex = dialogImages.findIndex((img) => img === image);
+
+    const back = dialogImages.slice(currentIndex + 1, dialogImages.length + 1);
+    const front = dialogImages.slice(0, currentIndex);
+
+    const newSequence = [image, ...front, ...back];
+
+    setDialogImages(newSequence);
   }
 
-  const imageTitle = () => {
-    const splits = dialogImage.split('/');
-    const fileName = splits[splits.length - 1];
-    return fileName?.split('.')[0];
-  }
 
   if (loading) {
     return (
@@ -142,7 +145,7 @@ export default function ProjectBody({
           {
             projectItem.images.map((image, i) => (
               <CarouselItem
-                className="basis-1/1 md:basis-1/2 lg:basis-1/3"
+                className="h-full md:basis-1/3"
                 key={i}
                 id={`CarouselItem_${i}`}
               >
@@ -151,18 +154,23 @@ export default function ProjectBody({
                   <img className="aspect-square
                                   rounded-xl
                                   overflow-hidden
-                                  object-contain
+                                  object-cover
+                                  object-center
                                   w-full h-full
                                   "
                        src={image} alt={image}/>
 
                   <Button
                     className="absolute
-                                  top-0 left-0 w-full h-full
-                                  opacity-50 md:opacity-0
-                                  hover:opacity-50
-                                  transition-opacity
-                                  "
+                                top-2 right-2
+                                md:w-full md:h-full
+                                opacity-70
+                                md:opacity-0
+                                bg-slate-200
+                                md:bg-transparent
+                                hover:opacity-50
+                                transition-opacity
+                                "
                     onClick={() => openDialog(image)}
                     variant="ghost"
                     size="icon"
@@ -197,14 +205,43 @@ export default function ProjectBody({
           className={`markdown-body h-full   ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
           dangerouslySetInnerHTML={{__html: html || ''}}/>
 
-        <Dialog modal open={isOpen} onOpenChange={setIsOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{imageTitle()}</DialogTitle>
-            </DialogHeader>
+        <Dialog modal
+                open={isOpen} onOpenChange={setIsOpen}>
+          <DialogContent className="h-full w-full p-0">
 
-            <img className="h-full w-full"
-                 src={dialogImage} alt={dialogImage}/>
+            <Carousel className="w-full p-0
+                                 self-center justify-self-center"
+            >
+              <CarouselContent id="CarouselContent"
+                               className="w-full h-full py-2">
+                {
+                  dialogImages.map((image, i) => (
+                    <CarouselItem
+                      className="h-full"
+                      key={i}
+                      id={`CarouselItem_${i}`}
+                    >
+                        <img className="aspect-square
+                                  rounded-xl
+                                  overflow-hidden
+                                  object-contain
+                                  object-center
+                                  w-full h-full
+                                  "
+                             src={image} alt={image}/>
+                    </CarouselItem>
+                  ))
+                }
+              </CarouselContent>
+
+              <CarouselPrevious
+                className="left-1 bg-slate-500 dark:bg-slate-200"
+              />
+              <CarouselNext
+                className="right-1 bg-slate-500 dark:bg-slate-200"
+              />
+            </Carousel>
+
 
           </DialogContent>
         </Dialog>
