@@ -29,16 +29,19 @@ export function TheProjectSidebar({ items, onSelectProject, className, children,
              {...props}
     >
 
+
+{/*
       <SidebarHeader className="
                          bg-slate-100
                          md:bg-transparent
                           p-4 pt-2">
-        {`A list of projects I've worked on, some of them are still on-going.`}
+        Projects
       </SidebarHeader>
-
+*/}
 
       <SidebarContent
-        className="bg-slate-100
+        className="mt-1
+                   bg-slate-100
                    md:bg-transparent
                   "
         style={{

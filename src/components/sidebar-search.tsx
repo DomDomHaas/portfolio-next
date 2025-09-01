@@ -22,7 +22,7 @@ export function SidebarSearch({ onSearchChange, ...props }: SidebarSearchProps) 
           </Label>
           <SidebarInput
             id="search"
-            placeholder="Search the projects..."
+            placeholder="Search Projects..."
             className="pl-8"
             onChange={(e) => onSearchChange(e.target.value)}
           />

@@ -61,7 +61,10 @@ export function NavProjects(
   return <SidebarGroup>
     <SidebarSearch onSearchChange={assignSearchText} />
 
+{/*
     <SidebarGroupLabel className="mt-2">Projects</SidebarGroupLabel>
+*/}
+    <SidebarGroupLabel className="mt-2"></SidebarGroupLabel>
 
     <SidebarMenu>
       {
