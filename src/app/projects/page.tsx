@@ -7,12 +7,10 @@ import {
 
 import {TheProjectSidebar} from "@/components/the-project-sidebar";
 
-import {TagSearch} from "@/components/tag-search";
 import {useEffect, useState} from "react";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {Project, ProjectItem} from "../../../types/projectTypes";
 import ProjectBody from "@/components/project-body";
-import {forEachEntryModule} from "next/dist/build/webpack/utils";
 
 
 const extractProjectTags = (projects: Project[]) => {

@@ -26,38 +26,35 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
   }
 
   return (
-    <div>
+    <NavigationMenu
+      id="HeaderNavigation"
+      className="NavigationMenuRoot w-full max-w-full p-2">
 
-      <NavigationMenu
-        id="HeaderNavigation"
-        className="NavigationMenuRoot w-full max-w-full">
+      <NavigationMenuList className="NavigationMenuList">
+        {
+          entries.map((entry) => (
+            <NavigationMenuItem key={entry.href}>
 
-        <NavigationMenuList className="NavigationMenuList">
-          {
-            entries.map((entry) => (
-              <NavigationMenuItem key={entry.href}>
+              <NavigationMenuLink href={entry.href}
+                                  className="font-normal text-lg"
+              >
+                {entry.title}
+              </NavigationMenuLink>
 
-                <NavigationMenuLink href={entry.href}
-                                    className="font-medium text-lg"
-                >
-                  {entry.title}
-                </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))
+        }
 
-              </NavigationMenuItem>
-            ))
-          }
+        <Button aria-roledescription="button"
+                onClick={toggleIsDark}
+                variant="ghost"
+                size="icon"
+        >
+          { isDark ? ( <Moon /> ) : ( <Sun /> )}
+        </Button>
 
-          <Button aria-roledescription="button"
-                  onClick={toggleIsDark}
-                  variant="ghost"
-                  size="icon"
-          >
-            { isDark ? ( <Moon /> ) : ( <Sun /> )}
-          </Button>
-
-        </NavigationMenuList>
-      </NavigationMenu>
-    </div>
+      </NavigationMenuList>
+    </NavigationMenu>
 )
 }
 

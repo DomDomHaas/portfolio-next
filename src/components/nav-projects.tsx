@@ -62,37 +62,36 @@ export function NavProjects(
   }
 
   return <SidebarGroup>
+{/*
     <SidebarSearch onSearchChange={assignSearchText} />
+*/}
 
 {/*
     <SidebarGroupLabel className="mt-2">Projects</SidebarGroupLabel>
 */}
-    <SidebarGroupLabel className="mt-2"></SidebarGroupLabel>
+
 
     <SidebarMenu>
       {
-        subSelectItems(projects, searchText).map((item) => <Collapsible
-          key={item.title}
-          asChild
-          className="group/collapsible"
-        >
-
-{/*
-          defaultOpen={item.isActive}
-*/}
-
+        subSelectItems(projects, searchText).map((item) =>
           <SidebarMenuItem>
 
+{/*
             <CollapsibleTrigger asChild>
+*/}
               <SidebarMenuButton tooltip={item.title}
                                  className="cursor-pointer"
               >
                 <span>{item.title}</span>
+{/*
                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+*/}
               </SidebarMenuButton>
+{/*
             </CollapsibleTrigger>
 
             <CollapsibleContent>
+*/}
               <SidebarMenuSub>
                 {
                   ('items' in item) ?
@@ -116,9 +115,11 @@ export function NavProjects(
                   : null
                 }
               </SidebarMenuSub>
+{/*
             </CollapsibleContent>
+*/}
           </SidebarMenuItem>
-        </Collapsible>)
+        )
       }
     </SidebarMenu>
   </SidebarGroup>

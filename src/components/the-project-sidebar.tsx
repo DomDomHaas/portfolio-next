@@ -16,7 +16,7 @@ type TheProjectSidebarProps = React.ComponentProps<typeof Sidebar> & {
   projects: Project[]
   onSelectProject(title: string): void;
   className: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function TheProjectSidebar({ projects, onSelectProject, className, children, ...props }: TheProjectSidebarProps) {
@@ -30,6 +30,7 @@ export function TheProjectSidebar({ projects, onSelectProject, className, childr
     >
 
 
+
 {/*
       <SidebarHeader className="
                          bg-slate-100
@@ -39,10 +40,12 @@ export function TheProjectSidebar({ projects, onSelectProject, className, childr
       </SidebarHeader>
 */}
 
+
       <SidebarContent
         className="mt-1
                    bg-slate-100
                    md:bg-transparent
+                   shadow-none
                   "
         style={{
           scrollbarWidth: 'thin',
@@ -51,6 +54,7 @@ export function TheProjectSidebar({ projects, onSelectProject, className, childr
       >
         <NavProjects projects={projects}
                      onSelectProject={onSelectProject}/>
+
       </SidebarContent>
 
       <SidebarFooter

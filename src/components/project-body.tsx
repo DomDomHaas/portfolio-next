@@ -21,12 +21,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-import {Card} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {BookOpen, Expand} from "lucide-react";
+import {Expand} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
 import {SidebarTrigger} from "@/components/ui/sidebar";
-import {Separator} from "@/components/ui/separator";
 
 export default function ProjectBody({
   loading,
@@ -77,9 +75,12 @@ export default function ProjectBody({
 
   if (loading) {
     return (
-      <div className="grid
+      <div id="projectBody"
+           className="grid
                     grid-rows-[225px_1fr]
                     lg:grid-rows-[250px_1fr]
+                    bg-transparent
+                    border-0
                     gap-0
                     mt-4
                     h-full
@@ -112,24 +113,40 @@ export default function ProjectBody({
     grid-rows-[48px_185px_1fr]
 */
 
-    <div className="grid
+    <div id="projectBody"
+         className="grid
                     grid-rows-[235px_1fr]
-                    bg-slate-200/70
-                    border-slate-100
-                    dark:bg-slate-500/60
-                    dark:border-slate-500
-                    rounded-xl
+                    bg-transparent
+                    border-0
+                    shadow-none
                     gap-0
-                    pt-2
+                    p-0
                     h-full
+                    overflow-auto
                     "
+         style={{
+           scrollbarWidth: 'thin',
+           scrollbarColor: 'white transparent',
+         }}
     >
 
-      <SidebarTrigger className="absolute m-1 p-5 bg-slate-100 dark:bg-slate-500 md:p-4 top-0 left-0" />
+      <SidebarTrigger className="
+                        absolute top-0 left-0
+                        m-1 p-5 md:p-5
+                        bg-slate-400
+                        hover:bg-slate-200 dark:hover:bg-slate-600
+                        text-black dark:text-white
+                        rounded-3xl
+                        shadow-md
+                        " />
 
       <Carousel className="h-full w-3/5 md:w-4/5 justify-self-center">
         <CarouselContent id="CarouselContent"
-                         className="w-full h-full py-2">
+                         className="
+                          bg-transparent
+                          border-0
+                          w-full h-full py-2"
+        >
           {
             projectItem.images.map((image, i) => (
               <CarouselItem
@@ -174,26 +191,20 @@ export default function ProjectBody({
         <CarouselNext className="dark:bg-slate-500" />
       </Carousel>
 
-      <div className="overflow-auto
-                      bg-slate-200/70
-                      border-slate-100
-                      dark:bg-slate-500/60
-                      dark:border-slate-500
-                      p-5
-                      rounded-b-xl
-                      "
-           style={{
-             scrollbarWidth: 'thin',
-             scrollbarColor: 'white transparent',
-           }}
+      <div id="projectBodyText"
+        className="bg-transparent
+                   p-5
+                   rounded-b-xl
+                   "
       >
         <div
           className={`markdown-body h-full   ${isDark ? 'markdown-body-dark' : 'markdown-body-light'}`}
           dangerouslySetInnerHTML={{__html: html || ''}}/>
 
         <Dialog modal
-                open={isOpen} onOpenChange={setIsOpen}>
-          <DialogContent className="h-full w-full p-0">
+                open={isOpen} onOpenChange={setIsOpen}
+        >
+          <DialogContent className="max-w-full h-full w-full p-0">
 
             <Carousel className="w-full p-0
                                  self-center justify-self-center"

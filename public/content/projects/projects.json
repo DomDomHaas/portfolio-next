@@ -1,54 +1,33 @@
 {
   "projects": [
     {
-      "title": "EnviDat - WSL",
+      "title": "EnviDat - 2025",
       "items": [
         {
-          "title": "Software Life Cycle of the EnviDat Frontend",
+          "title": "EnviDat Frontend",
           "images": ["/images/projects/EnviDat_Flyer.jpg","/images/projects/EnviDat_logo_128.png"],
           "tags": ["vue", "vite", "vitest", "frontend", "vuetify", "storybook", "typescript", "leaflet", "AmCharts", "chart.js"],
           "content": "envidatFrontend"
         },
         {
-          "title": "Pre-rendering for SEO",
-          "images": ["/images/projects/EnviDat_Flyer.jpg","/images/projects/EnviDat_logo_128.png"],
-          "tags": ["vue", "vite", "vike.dev", "S3 Buckets"],
-          "content": "preRenderingSEO"
-        },
-        {
           "title": "Senior Software Engineer",
           "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
           "tags": ["lead programmer", "code reviews", ""]
         },
         {
-          "title": "ICP Forest Defoliation",
+          "title": "Data Visualization at WSL",
           "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
           "tags": ["data visualization", "typescript", "vue", "bulma", "chart.js", "open layers"]
         },
         {
-          "title": "CI/CD Pipelines",
+          "title": "DevOps & CI/CD Pipelines",
           "images": ["/images/projects/EnviDat_logo_128.png"],
           "tags": ["gitlab", "pipeline", "docker", "rclone", "S3 Buckets", "DevOps"]
-        },
-        {
-          "title": "GenDib Frontend And Map",
-          "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
-          "tags": ["data visualization", "typescript", "vue", "bulma", "chart.js", "open layers"]
-        },
-        {
-          "title": "Design of Logo & Posters",
-          "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
-          "tags": ["design", "logo"]
-        },
-        {
-          "title": "Senior Software Engineer",
-          "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
-          "tags": ["lead programmer", "code reviews", ""]
         }
       ]
     },
     {
-      "title": "BitForge AG",
+      "title": "BitForge AG - 2017",
       "items": [{
         "title": "Fooby",
         "images": [],
@@ -57,20 +36,22 @@
       }]
     },
     {
-      "title": "Amiado Group GmbH"
-    },
-    {
-      "title": "UBS AG"
-    },
-    {
       "title": "Games",
       "items": [{
         "title": "DERU - The Art Of Cooperation",
-        "images": ["/images/projects/deru_triangle.webp"],
+        "hero": "/images/projects/deru/hero.webp",
+        "images": [
+          "/images/projects/deru/flyer_deru_b_qr_link.webp",
+          "/images/projects/deru/journey_opposites.gif",
+          "/images/projects/deru/Deru_Poster_Split2.webp",
+          "/images/projects/deru/protect.gif",
+          "/images/projects/deru/Deru_Poster_Transfer_quer.webp",
+          "/images/projects/deru/cooperate.gif"
+        ],
         "tags": ["unity", "C#", "steam", "switch", "team lead", "itch.io", "lead programmer", "game design"],
         "content": "deru"
       },{
-        "title": "Black Monday - Bachelor Project",
+        "title": "Black Monday - 2015",
         "images": [],
         "tags": ["unity", "C#", "itch.io", "action game", "lead programmer", "programming", "game design"],
         "content": "blackMonday"

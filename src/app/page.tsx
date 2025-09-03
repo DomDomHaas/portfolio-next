@@ -1,23 +1,14 @@
 'use client'
 
-import {Button} from "@/components/ui/button";
-import Link from "next/link";
-import BlogCard from "@/components/blog-card-body";
 import OverviewCard from "@/components/overview-card";
 import MosaicOverviewCard from "@/components/mosaic-overview-card";
 import {useEffect, useState} from "react";
-import {Project, ProjectItem} from "../../types/projectTypes";
+import {ProjectItem} from "../../types/projectTypes";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {BlogPost} from "../../types/blogTypes";
 import {loadPosts} from "@/app/blog/blogApi";
 import ProfileImage from "@/components/profile-image";
 import ButtonCard from "@/components/button-card";
-
-const previews = [
-  { title: 'bla', img: '/images/projects/EnviDat_Flyer.jpg'},
-  { title: 'bli', img: '/images/projects/EnviDat_logo_128.png'},
-  { title: 'blu', img: '/images/projects/EnviDat_Flyer.jpg'},
-]
 
 
 export default function HomePage() {
