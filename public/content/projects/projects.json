@@ -67,15 +67,21 @@
       "items": [{
         "title": "DERU - The Art Of Cooperation",
         "images": [],
-        "tags": ["unity", "C#", "steam", "switch", "team lead", "lead programmer"]
+        "tags": ["unity", "C#", "steam", "switch", "team lead", "itch.io", "lead programmer", "game design"],
+        "content": "deru"
+      },{
+        "title": "Black Monday - Bachelor Project",
+        "images": [],
+        "tags": ["unity", "C#", "itch.io", "action game", "lead programmer", "programming", "game design"],
+        "content": "blackMonday"
       },{
         "title": "Duels of Shadows",
         "images": [],
-        "tags": ["playdate", "lua", "fighting engine", "itch.io"]
+        "tags": ["playdate", "lua", "action game", "itch.io", "programming", "game design"]
       },{
         "title": "Maki Maker",
         "images": [],
-        "tags": ["playdate", "lua", "itch.io"]
+        "tags": ["playdate", "lua", "itch.io", "programming", "game design"]
       }]
     },
     {
