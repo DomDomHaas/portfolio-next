@@ -1,11 +1,7 @@
 import { Card } from "@/components/ui/card"
-import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {BlogPost} from "../../types/blogTypes";
 
-
-
-const defaultImgClassName = "rounded-t-xl max-h-full w-full object-cover";
 
 export default function MosaicOverviewCard({
   title,
