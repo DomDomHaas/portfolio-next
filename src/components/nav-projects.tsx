@@ -18,21 +18,24 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-import {Project, ProjectGroupItem, ProjectItem} from "@/../types/projectTypes";
+import {Project, ProjectItem} from "@/../types/projectTypes";
 import {SidebarSearch} from "@/components/sidebar-search";
 import {useState} from "react";
 
-const subSelectItems = (items: ProjectGroupItem[] | ProjectItem[] | undefined, text: string): ProjectGroupItem[] | ProjectItem[] => {
+const subSelectItems = (items: Project[] | ProjectItem[] | undefined, text: string): (Project | ProjectItem)[] => {
   if (!items || !items.length) {
     return [];
   }
 
-  const foundItems = items.filter((item) => item.title.toLowerCase().includes(text.toLowerCase()));
+  const foundItems: (Project | ProjectItem)[] = items.filter((item) => item.title.toLowerCase().includes(text.toLowerCase()));
 
   items.forEach((item) => {
-    const subs = subSelectItems(item.items, text);
-    if (subs.length > 0 && !foundItems.includes(item)) {
-      foundItems.push(item);
+    if ('items' in item) {
+      const project = item as Project;
+      const subs = subSelectItems(project.items, text);
+      if (subs.length > 0 && !foundItems.includes(item)) {
+        foundItems.push(item);
+      }
     }
   })
 
@@ -41,10 +44,10 @@ const subSelectItems = (items: ProjectGroupItem[] | ProjectItem[] | undefined, t
 
 export function NavProjects(
   {
-    items,
+    projects,
     onSelectProject,
   }: {
-    items: Project[]
+    projects: Project[]
     onSelectProject(title: string): void;
 }) {
 
@@ -68,12 +71,16 @@ export function NavProjects(
 
     <SidebarMenu>
       {
-        subSelectItems(items, searchText).map((item) => <Collapsible
+        subSelectItems(projects, searchText).map((item) => <Collapsible
           key={item.title}
           asChild
-          defaultOpen={item.isActive}
           className="group/collapsible"
         >
+
+{/*
+          defaultOpen={item.isActive}
+*/}
+
           <SidebarMenuItem>
 
             <CollapsibleTrigger asChild>
@@ -88,18 +95,25 @@ export function NavProjects(
             <CollapsibleContent>
               <SidebarMenuSub>
                 {
-                  subSelectItems(item?.items, searchText).map((subItem, index) => (
-                    <SidebarMenuSubItem key={`${subItem.title}_${index}`}>
-                      <SidebarMenuSubButton asChild
-                                            isActive={subItem.isActive}
-                                            className="cursor-pointer"
+                  ('items' in item) ?
+                    subSelectItems(item?.items, searchText).map((subItem, index) => (
+                      <SidebarMenuSubItem
+                        key={`${subItem.title}_${index}`}
+                        className={subItem.hidden ? 'hidden' : '' }
                       >
-                        <a onClick={() => selectProject(subItem.title)}>
-                          <span >{subItem.title}</span>
-                        </a>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))
+                        <SidebarMenuSubButton asChild
+                                              className="cursor-pointer"
+                        >
+{/*
+                          isActive={subItem.isActive}
+*/}
+                          <a onClick={() => selectProject(subItem.title)}>
+                            <span>{subItem.title}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))
+                  : null
                 }
               </SidebarMenuSub>
             </CollapsibleContent>

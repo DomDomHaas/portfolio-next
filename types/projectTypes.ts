@@ -11,6 +11,7 @@ export type ProjectItem = {
   tags: string[];
   content: string;
   isActive?: boolean;
+  hidden: boolean;
 }
 
 

@@ -12,6 +12,7 @@ import {useEffect, useState} from "react";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {Project, ProjectItem} from "../../../types/projectTypes";
 import ProjectBody from "@/components/project-body";
+import {forEachEntryModule} from "next/dist/build/webpack/utils";
 
 
 const extractProjectTags = (projects: Project[]) => {
@@ -77,10 +78,44 @@ export default function ProjectsList() {
     })
   }
 
+  const filterProjects = () => {
+/*
+    if (selectedTags.length <= 0) {
+      return projects;
+    }
+*/
+
+    // let filtered: Project[] = [];
+
+
+    for (let i = 0; i < selectedTags.length; i++) {
+      const tag = selectedTags[i];
+
+      projects.forEach((item) => {
+        const projectItems = item.items;
+        if (projectItems) {
+          projectItems.forEach((proItem) => {
+            proItem.hidden = proItem.tags.includes(tag);
+          })
+        }
+      });
+
+/*
+      if (matches.length > 0) {
+        filtered = [...filtered, ...matches];
+      }
+*/
+    }
+
+    // return filtered;
+  }
+
   const toggleTagSelected = (toggleTag: string) => {
     setSelectedTags((prevTags) => {
       return prevTags.includes(toggleTag) ? prevTags.filter((t) => t !== toggleTag) : [...prevTags, toggleTag];
     });
+
+    filterProjects();
   }
 
   const loadingProjects = () => projects?.length <= 0;
