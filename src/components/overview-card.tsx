@@ -18,30 +18,23 @@ export default function OverviewCard({
 }) {
   return(
     <Card id="OverviewCard"
-          className="grid grid-rows-[2fr_6fr_2fr]
+          className="grid grid-rows-[150px_2fr]
                      gap-4 p-0
-                     bg-slate-200/70
-                     border-slate-100
-                     dark:bg-slate-500/60
-                     dark:border-slate-500
+                     bg-slate-200/50
+                     border-0
+                     dark:bg-slate-500/50
                      rounded-xl
           ">
-
-      <div className="p-4 pb-0 text-lg">
-        {title}
-      </div>
 
       <div className="relative overflow-hidden">
         {
           previewProjects.map((entry, index) => (
-            <div key={`${entry.title}_${index}`}
+            <Link key={`${entry.title}_${index}`}
+                  href={`/projects/${entry.content}`}
                  className="
                     absolute
                     top-2
-                    border-1
-                    border-slate-200
-                    dark:border-slate-600
-                    rounded-xl
+                    rounded-md
                     h-[150px]
                     w-[130px]
                     hover:scale-125
@@ -51,24 +44,30 @@ export default function OverviewCard({
                     transition-all
                    "
                  style={{
-                   left: `${100 * index}px`,
+                   left: `${20 + 115 * index}px`,
                    zIndex: `${2 + index}`,
-                   transform: `rotate(${-15 + 15 * index}deg) translate(0px, ${ index == 1 ? 0 : 20}px)`,
+                   transform: `rotate(${-15 + 15 * index}deg) translate(0px, ${index == 1 ? 0 : 20}px)`,
                  }}
             >
 
               <img src={entry.images[0]} alt={entry.title}
                    height={150} width={130}
-                   className="rounded-xl"
+                   className="rounded-md"
               />
 
-            </div>
+            </Link>
           ))
         }
       </div>
 
-      <div className="justify-self-end p-4 pt-0">
-        {children}
+      <div>
+        <div className="p-4 pt-0 text-2xl">
+          {title}
+        </div>
+
+        <div className="justify-self-end p-4 pt-0">
+          {children}
+        </div>
       </div>
 
     </Card>

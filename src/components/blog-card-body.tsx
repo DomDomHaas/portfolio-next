@@ -1,7 +1,5 @@
-import {Button} from "@/components/ui/button";
-import Link from "next/link";
 import {BlogPost} from "../../types/blogTypes";
-import {NotebookText} from "lucide-react";
+import ButtonCard from "@/components/button-card";
 
 export default function BlogCardBody({
  title,
@@ -16,7 +14,7 @@ export default function BlogCardBody({
            h-full p-4 gap-2
          ">
 
-      <div className="text-base md:text-lg leading-none font-semibold">
+      <div className="text-2xl leading-none">
         {title}
       </div>
 
@@ -25,6 +23,9 @@ export default function BlogCardBody({
       </div>
 
       <div className="h-auto justify-self-end content-end">
+        <ButtonCard text="Read" url={`/blog/${content}`} />
+
+{/*
         <Button asChild className="shadow-md"
                 variant="outline"
         >
@@ -32,6 +33,7 @@ export default function BlogCardBody({
             <NotebookText /> Read
           </Link>
         </Button>
+*/}
 
         {children}
       </div>

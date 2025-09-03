@@ -18,14 +18,14 @@ export default function BlogHeroCard({
   return(
     <Card id="BlogHeroCard"
           className=" grid
-                      grid-cols-[1fr_1fr]
-                      xl:grid-cols-[750px_auto]
+                      grid-cols-[2fr_1fr]
+                      md:grid-cols-[1fr_1fr]
+                      xl:grid-cols-[700px_auto]
                       h-[200px] md:h-[250px] lg:h-full
-                      gap-0 overflow-hidden m-2 py-0
-                      bg-slate-200/70
-                      dark:bg-slate-500/70
-                      border-slate-100
-                      dark:border-slate-500
+                      gap-0 overflow-hidden py-0
+                      bg-slate-200/50
+                      border-0
+                      dark:bg-slate-500/50
                       relative
                       rounded-xl
                       ">
