@@ -108,8 +108,12 @@ export default function ProjectBody({
 
   return (
 
+/*
+    grid-rows-[48px_185px_1fr]
+*/
+
     <div className="grid
-                    grid-rows-[48px_185px_1fr]
+                    grid-rows-[235px_1fr]
                     bg-slate-200/70
                     border-slate-100
                     dark:bg-slate-500/60
@@ -121,23 +125,7 @@ export default function ProjectBody({
                     "
     >
 
-      <div className="flex h-12
-                      shrink-0 items-center gap-2
-                      transition-[width,height] ease-linear
-                      group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
-      >
-        <div className="flex items-center gap-2 px-4 ">
-          <SidebarTrigger className="-ml-1" />
-
-          <Separator
-            orientation="vertical"
-            className="mr-2 data-[orientation=vertical]:h-4"
-          />
-
-          { projectItem?.title }
-
-        </div>
-      </div>
+      <SidebarTrigger className="absolute m-1 p-5 bg-slate-100 dark:bg-slate-500 md:p-4 top-0 left-0" />
 
       <Carousel className="h-full w-3/5 md:w-4/5 justify-self-center">
         <CarouselContent id="CarouselContent"
@@ -145,14 +133,13 @@ export default function ProjectBody({
           {
             projectItem.images.map((image, i) => (
               <CarouselItem
-                className="h-full md:basis-1/3"
+                className="h-full md:basis-1/2 lg:basis-1/3"
                 key={i}
                 id={`CarouselItem_${i}`}
               >
-                <Card className="h-full relative p-0">
-
+                <div className="h-full relative p-0">
                   <img className="aspect-square
-                                  rounded-xl
+                                  rounded-sm
                                   overflow-hidden
                                   object-cover
                                   object-center
@@ -162,7 +149,7 @@ export default function ProjectBody({
 
                   <Button
                     className="absolute
-                                top-2 right-2
+                                top-0 right-0
                                 md:w-full md:h-full
                                 opacity-70
                                 md:opacity-0
@@ -177,8 +164,7 @@ export default function ProjectBody({
                   >
                     <Expand/>
                   </Button>
-
-                </Card>
+                </div>
               </CarouselItem>
             ))
           }
