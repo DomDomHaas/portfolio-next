@@ -4,6 +4,7 @@ import {Raleway} from "next/font/google";
 import "./globals.css";
 import '@/app/github-markdown.css';
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
+import Link from "next/link";
 
 
 const raleway = Raleway({
@@ -17,13 +18,15 @@ const raleway = Raleway({
 
 const NavEntries : NavEntry[] = [
   {
-    title: 'Home',
-    href: '/'
-  },
-  {
     title: 'Projects',
     href: '/projects'
   },
+/*
+  {
+    title: 'Skills',
+    href: '/skills'
+  },
+*/
   {
     title: 'Blog',
     href: '/blog'
@@ -70,13 +73,21 @@ export default function RootLayout({
           dark:bg-slate-500/40
           mx-auto
           w-full
-          lg:w-[1024px]
+          lg:w-[1280px]
           rounded-t-xl
-          border-b-1
+          border-0
           noise
         "
       >
-        <TheNavigation entries={NavEntries}/>
+        <div className="flex flex-row">
+          <div className="flex-grow justify-self-start">
+            <div className="p-4 text-lg md:text-2xl font-normal"><Link href="/">Dominik Haas</Link></div>
+          </div>
+
+          <div className="flex-shrink justify-self-end">
+            <TheNavigation entries={NavEntries}/>
+          </div>
+        </div>
       </header>
 
       <main
@@ -87,11 +98,10 @@ export default function RootLayout({
           rounded-b-xl
           mx-auto
           w-full
-          lg:w-[1024px]
+          lg:w-[1280px]
           bg-slate-300/40
           dark:bg-slate-500/40
           noise
-          pb-4
         "
         style={{
           scrollbarWidth: 'thin',

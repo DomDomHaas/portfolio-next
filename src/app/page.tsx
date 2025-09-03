@@ -11,6 +11,7 @@ import {loadProjects} from "@/app/projects/projectsApi";
 import {BlogPost} from "../../types/blogTypes";
 import {loadPosts} from "@/app/blog/blogApi";
 import ProfileImage from "@/components/profile-image";
+import ButtonCard from "@/components/button-card";
 
 const previews = [
   { title: 'bla', img: '/images/projects/EnviDat_Flyer.jpg'},
@@ -38,54 +39,49 @@ export default function HomePage() {
 
 
   return (
-    <div className={`h-full
-                    grid-rows-3
-                    grid-cols-1
-                    gap-4
-                    p-4
-                    `}>
+    <div className="h-full p-4">
 
       <div id="row-1"
-           className="py-4 pt-0 "
+           className="py-4 md:p-4 md:pb-8 "
       >
         <div className="inline md:hidden text-3xl text-center">
           Crafting intuitive<br/>
-          <span className="text-white dark:text-black font-light"> User Experiences</span>
+          <span className="text-white dark:text-black font-light">Digital Experiences</span>
           <br/>by balancing<br/>
           <span className={`text-white dark:text-black font-light`}>Design & Engineering</span>
         </div>
 
         <div className="hidden md:inline text-5xl">
-          Crafting intuitive <span className="text-white dark:text-black font-light"> User Experiences</span>
+          Crafting intuitive <span className="text-white dark:text-black font-light"> Digital Experiences</span>
           <br/>by balancing <span className={`text-white dark:text-black font-light`}>Design & Engineering</span>
         </div>
 
       </div>
 
       <div id="row-2"
-           className="py-4 md:py-8">
+           className="py-4 md:p-4 md:pb-8">
 
         <div className="flex flex-col md:flex-row">
-            <div className="ml-2 w-full md:w-1/4 md:h-full">
+            <div className="w-full md:w-1/4 md:h-full">
               <ProfileImage/>
             </div>
 
-            <div className="w-full mt-4 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
-              <div className="text-lg">Welcome and Thanks for the visit.</div>
-              <div className="mt-2">
+            <div className="w-full mt-8 md:mt-0 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
+              <div className="text-xl">Welcome and thanks for the visit.</div>
+              <div className="mt-2 text-lg">
                 I'm Dominik Haas an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
                 interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.
               </div>
 
               <div className="mt-4">
-                <div className="text-lg">Work Experience</div>
-                <div className="mt-2">
+                <div className="text-xl">Work Experience</div>
+                <div className="mt-2 text-lg">
                 I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D
                 Games.
                 I take care of the full software lifecycle from design stage to deployment. I've lead teams as senior
                 engineer in all concerns of
                 software engineering and design.
-                I enjoy rapid prototyping as much as working in high quality environments with solid architectures.
+                I enjoy rapid prototyping as much as working on high quality, solid architectures.
                 </div>
               </div>
 
@@ -99,9 +95,10 @@ export default function HomePage() {
       <div id="row-3"
            className="grid
                       grid-cols-1
-                      md:grid-cols-[3fr_2fr]
-                      gap-4
-                      pb-4 md:pb-8
+                      md:grid-cols-[2fr_2fr]
+                      gap-8
+                      md:gap-16
+                      py-4 md:p-4 md:pb-8
                       "
       >
 
@@ -115,9 +112,7 @@ export default function HomePage() {
                 title="Recent Projects"
                 previewProjects={previews}
               >
-              <Button asChild>
-                <Link href="projects">View Projects</Link>
-                </Button>
+                <ButtonCard text="View" url="/projects" />
               </OverviewCard>
 
             </div>
@@ -127,31 +122,14 @@ export default function HomePage() {
 
         <div className="">
           <div className="flex flex-col h-full">
-            {/*
-            <div className="h-1/2">
-              <div>
-                Side-Projects
-              </div>
-              <div>
-              </div>
-            </div>
-*/}
 
             <div className="h-1/2">
-
-              {/*
-              <Button asChild>
-                <Link href="blog">All Blog Posts</Link>
-              </Button>
-*/}
 
               <MosaicOverviewCard
                 title="Latest Blog Posts"
                 blogPosts={blogPreviews}
               >
-                <Button asChild>
-                  <Link href="blog">Read Blog</Link>
-                </Button>
+                <ButtonCard text="Read" url="/blog" />
               </MosaicOverviewCard>
 
             </div>
@@ -159,16 +137,6 @@ export default function HomePage() {
         </div>
       </div>
 
-{/*
-      <div id="row-4"
-           className="py-4">
-        <div className="text-lg">Work Experience</div>
-        I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D Games.
-        I take care of the full software lifecycle from design stage to deployment. I've lead teams as senior engineer in all concerns of
-        software engineering and design.
-        I enjoy rapid prototyping as much as working in high quality environments with solid architectures.
-      </div>
-*/}
 
     </div>
   );

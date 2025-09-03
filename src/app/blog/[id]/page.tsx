@@ -50,13 +50,17 @@ export default function BlogPost() {
 
 
   return (
-    <div className="min-h-0 h-full p-2 relative">
+    <div className="min-h-0 h-full p-4 relative">
 
-      <Button className="absolute right-4 md:right-7 top-4
-                         cursor-pointer shadow-md
+      <Button className="absolute right-4 md:right-8 top-4
+                         cursor-pointer
+                         bg-slate-400
+                         hover:bg-slate-200 dark:hover:bg-slate-600
+                         text-black dark:text-white
+                         rounded-3xl
+                         shadow-md
                          z-100 p-0 m-1 "
               onClick={navigateToBlogList}
-              variant="outline"
       >
         <CircleX/> Back
       </Button>
@@ -66,7 +70,7 @@ export default function BlogPost() {
                       gap-2
                       h-full
                       overflow-auto
-                      bg-slate-200/70
+                      bg-transparent
                       m-1 p-2 rounded-xl
                       "
            style={{

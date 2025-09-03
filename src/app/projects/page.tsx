@@ -125,11 +125,16 @@ export default function ProjectsList() {
 
   return (
     <div id="projectRoot"
-         className="bg-transparent min-h-0 h-full"
+         className="
+          bg-transparent border-0
+          min-h-0
+          pt-4
+          p-0
+          h-full"
     >
 
     <SidebarProvider
-      className="bg-transparent h-full">
+      className="bg-transparent border-0 h-full">
 
 {/*
       className="bg-slate-400 grid sm:grid-cols-1 md:grid-cols-[1fr_4fr] grid-rows-1 gap-0 auto-rows-auto">
@@ -139,26 +144,29 @@ export default function ProjectsList() {
                          onSelectProject={(value) => selectProject(value)}
                          className="
                          overflow-hidden
-                         rounded-bl-xl
+                         bg-transparent border-0
+                         shadow-none
                          p-0 h-full"
       >
 
+{/*
         <TagSearch
           loading={loadingProjects()}
           projectTags={projectTags}
           selectedTags={selectedTags}
           onTagSelection={(value) => toggleTagSelected(value)}
         />
+*/}
 
 
       </TheProjectSidebar>
 
       <SidebarInset
         id="TheSidebarInset"
-        className="bg-slate-200/70"
+        className="bg-transparent border-0"
       >
 
-        <div className="bg-transparent h-full shrink-0">
+        <div className="h-full shrink-0">
           {
             selectedProject ? (
               <ProjectBody
