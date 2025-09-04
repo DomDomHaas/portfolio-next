@@ -1,7 +1,5 @@
-## DERU - The Art of Cooperation
 
 After graduation in Game Design at the ZHdK, I’ve developed [DERU – The Art of Cooperation](https://www.deru.ch).
-It is a cooperative puzzle game that mixes eye catching abstract art with mind bending puzzles to a unique gaming experience.
 It won +10 Awards, including Best Swiss Game 2017 and was self-published in Nov. 2018.
 
 ### Game Design
@@ -30,17 +28,17 @@ From early in the development DERU won different awards starting with the Blue B
 was still called "Schlicht" and continued to achieve critically acclaimed.
 
 In total DERU Won 11 Awards, including these highlights:
+
 - Pro Helvetia Call for Projects Winner 2015
 - Game Connection Pitch Award 2016
 - GDC Best in Play 2016
 - Swissnex Startup Booster 2016
 - Swiss Game Developers Association (SGDA) [Best Swiss Game & Audience Award 2017](https://www.sgda.ch/swiss-game-awards/)
 
-Once released DERU achieved a [Metacritic Score of 79](https://www.metacritic.com/game/deru-the-art-of-cooperation/).
-
 
 ### Release
 
 On the 7th November 2018 DERU was released on [Steam](https://store.steampowered.com/app/632250/DERU__The_Art_of_Cooperation/), [Nintendo Switch](https://www.nintendo.com/us/store/products/deru-the-art-of-cooperation-switch/) and [itch.io](https://inkkit.itch.io/deru).
+DERU achieved a [Metacritic Score of 79](https://www.metacritic.com/game/deru-the-art-of-cooperation/).
 
 

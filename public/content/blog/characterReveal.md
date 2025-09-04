@@ -4,9 +4,6 @@
 The second character to be playable [Duel of Shadows](https://dominik-haas.itch.io/duel-of-shadows) is the Samurai!
 
 
-![Reveal Samurai](https://img.itch.zone/aW1nLzEzNjg4NzcxLmdpZg==/original/b0kmR8.gif)
-(Second character: Samurai. The art is from the dark series of Penusbmic)
-
 ### Skills
 
 The Samurai has a strong attack which can be combined with a stronger follow up attack. The later has a strong knock back effect to the opponents. As a second skills the Samurai can block with its huge sword.

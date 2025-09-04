@@ -5,9 +5,16 @@
       "items": [
         {
           "title": "EnviDat Frontend",
-          "images": ["/images/projects/EnviDat_Flyer.jpg","/images/projects/EnviDat_logo_128.png"],
+          "hero": "/images/projects/envidat/envidat_hero.webp",
+          "preview": "/images/projects/envidat/EnviDat_logo_512.webp",
+          "tldr": "EnviDat provides research data from Switzerland and around the world.\nThe data is provided by researchers from various research units of the Swiss Federal Institute for Forest, Snow and Landscape WSL.",
+          "images": [
+            "/images/projects/envidat/EnviDat_Poster_Showcase.webp",
+            "/images/projects/envidat/EnviDat_Flyer@300x-100.webp",
+            "/images/projects/envidat/EnviDat_logo_128.png"
+          ],
           "tags": ["vue", "vite", "vitest", "frontend", "vuetify", "storybook", "typescript", "leaflet", "AmCharts", "chart.js"],
-          "content": "envidatFrontend"
+          "content": "envidat"
         },
         {
           "title": "Senior Software Engineer",
@@ -16,8 +23,19 @@
         },
         {
           "title": "Data Visualization at WSL",
-          "images": ["/images/projects/EnviDat_Poster_Showcase.jpg","/images/projects/EnviDat_logo_128.png"],
-          "tags": ["data visualization", "typescript", "vue", "bulma", "chart.js", "open layers"]
+          "hero": "/images/projects/envidat/dataviz_hero.webp",
+          "preview": "/images/projects/envidat/dataviz_preview.webp",
+          "tldr": "While working at the WSL there were opportunities to visualize research data for different projects.",
+          "images": [
+            "/images/projects/envidat/icp_forest_defoliation_1990-2022.gif",
+            "/images/projects/envidat/dataviz_organizations.webp",
+            "/images/projects/envidat/dataviz_gcnet.webp",
+            "/images/projects/envidat/dataviz_gcnet_2.webp",
+            "/images/projects/envidat/dataviz_gendib.webp",
+            "/images/projects/envidat/dataviz_gendib_2.webp"
+          ],
+          "tags": ["data visualization", "typescript", "vue", "bulma", "chart.js", "open layers"],
+          "content": "dataviz"
         },
         {
           "title": "DevOps & CI/CD Pipelines",
@@ -27,26 +45,37 @@
       ]
     },
     {
-      "title": "BitForge AG - 2017",
+      "title": "BitForge - 2017",
       "items": [{
-        "title": "Fooby",
-        "images": [],
-        "tags": ["xamarin", "cross-platform", "mobile", "C#"],
-        "content": "bitforgeFooby"
+        "title": "Fooby - Mobile App",
+        "hero": "/images/projects/fooby/fooby_hero.webp",
+        "preview": "/images/projects/deru/deru_triangle.webp",
+        "tldr": "The digital kitchen assistant from Coop developed by Bitforge AG.",
+        "images": [
+          "/images/projects/fooby/fooby_2.webp",
+          "/images/projects/fooby/fooby_3.webp",
+          "/images/projects/fooby/fooby_mobile_1.webp",
+          "/images/projects/fooby/fooby_mobile_2.webp",
+          "/images/projects/fooby/fooby_mobile_3.webp",
+          "/images/projects/fooby/fooby_mobile_4.webp"
+        ],
+        "tags": ["xamarin", "cross-platform", "mobile", "C#", "software architecture"],
+        "content": "fooby"
       }]
     },
     {
       "title": "Games",
       "items": [{
-        "title": "DERU - The Art Of Cooperation",
+        "title": "DERU",
         "hero": "/images/projects/deru/hero.webp",
+        "preview": "/images/projects/deru/deru_triangle.webp",
+        "tldr": "DERU is a cooperative puzzle game that mixes eye catching abstract art with mind bending puzzles to a unique gaming experience.",
         "images": [
           "/images/projects/deru/flyer_deru_b_qr_link.webp",
-          "/images/projects/deru/journey_opposites.gif",
-          "/images/projects/deru/Deru_Poster_Split2.webp",
           "/images/projects/deru/protect.gif",
-          "/images/projects/deru/Deru_Poster_Transfer_quer.webp",
-          "/images/projects/deru/cooperate.gif"
+          "/images/projects/deru/cooperate.gif",
+          "/images/projects/deru/journey_opposites.gif",
+          "/images/projects/deru/Deru_Poster_Split2.webp"
         ],
         "tags": ["unity", "C#", "steam", "switch", "team lead", "itch.io", "lead programmer", "game design"],
         "content": "deru"
