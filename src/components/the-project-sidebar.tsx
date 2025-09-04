@@ -15,11 +15,22 @@ import {cn} from "@/lib/utils";
 type TheProjectSidebarProps = React.ComponentProps<typeof Sidebar> & {
   projects: Project[]
   onSelectProject(title: string): void;
+  onSelectProjectItem(title: string): void;
   className: string;
   children?: React.ReactNode;
 }
 
-export function TheProjectSidebar({ projects, onSelectProject, className, children, ...props }: TheProjectSidebarProps) {
+export function TheProjectSidebar(
+  {
+    projects,
+    onSelectProject,
+    onSelectProjectItem,
+    className,
+    children,
+    ...props
+  }
+    : TheProjectSidebarProps
+) {
 
   return (
     <Sidebar variant="inset"
@@ -53,7 +64,9 @@ export function TheProjectSidebar({ projects, onSelectProject, className, childr
         }}
       >
         <NavProjects projects={projects}
-                     onSelectProject={onSelectProject}/>
+                     onSelectProject={onSelectProject}
+                     onSelectProjectItem={onSelectProjectItem}
+        />
 
       </SidebarContent>
 

@@ -8,11 +8,6 @@ import {Button} from "@/components/ui/button";
 import {CircleX} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
 
-/*
-import '@/app/github-markdown-dark.css'
-import '@/app/github-markdown-light.css'
-*/
-
 
 export default function BlogPost() {
   const router = useRouter();

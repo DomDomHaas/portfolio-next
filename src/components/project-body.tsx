@@ -7,10 +7,6 @@ import {loadProjectContent} from "@/app/projects/projectsApi";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 
 import {
@@ -111,16 +107,18 @@ export default function ProjectBody({
 
 /*
     grid-rows-[48px_185px_1fr]
+                    grid
+                    grid-rows-[235px_1fr_2fr]
 */
 
     <div id="projectBody"
-         className="grid
-                    grid-rows-[235px_1fr]
+         className="flex flex-col
                     bg-transparent
                     border-0
                     shadow-none
                     gap-0
                     p-0
+                    pr-1
                     h-full
                     overflow-auto
                     "
@@ -131,7 +129,7 @@ export default function ProjectBody({
     >
 
       <SidebarTrigger className="
-                        absolute top-0 left-0
+                        absolute top-1 left-0
                         m-1 p-5 md:p-5
                         bg-slate-400
                         hover:bg-slate-200 dark:hover:bg-slate-600
@@ -140,6 +138,19 @@ export default function ProjectBody({
                         shadow-md
                         " />
 
+
+      <div id="hero" className="basis-base mx-auto">
+        <img src={projectItem.hero}
+             alt="Project Hero"
+             className="
+               rounded-md
+               "
+        />
+      </div>
+
+      <div id="tldr" className="my-4 mx-2">{projectItem.tldr}</div>
+
+      <div>
       <Carousel className="h-full w-3/5 md:w-4/5 justify-self-center">
         <CarouselContent id="CarouselContent"
                          className="
@@ -190,10 +201,12 @@ export default function ProjectBody({
         <CarouselPrevious className="dark:bg-slate-500" />
         <CarouselNext className="dark:bg-slate-500" />
       </Carousel>
+      </div>
 
       <div id="projectBodyText"
         className="bg-transparent
-                   p-5
+                   mx-2
+                   my-4
                    rounded-b-xl
                    "
       >
@@ -204,13 +217,18 @@ export default function ProjectBody({
         <Dialog modal
                 open={isOpen} onOpenChange={setIsOpen}
         >
-          <DialogContent className="max-w-full h-full w-full p-0">
+          <DialogContent className="
+                    bg-slate-300
+                    dark:bg-slate-500
+                    noise
+                    overflow-auto
+                    max-w-full h-full w-full p-0">
 
             <Carousel className="w-full p-0
                                  self-center justify-self-center"
             >
               <CarouselContent id="CarouselContent"
-                               className="w-full h-full py-2">
+                               className="w-full h-full md:h-auto py-2">
                 {
                   dialogImages.map((image, i) => (
                     <CarouselItem
