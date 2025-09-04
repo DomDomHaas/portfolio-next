@@ -4,3 +4,9 @@ export type BlogPost = {
   description: string;
   content: string;
 }
+
+export type PreviewItem = {
+  title: string;
+  img: string;
+  content: string;
+}

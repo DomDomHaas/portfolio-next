@@ -7,6 +7,9 @@ import type {LucideIcon} from "lucide-react";
 
 export type ProjectItem = {
   title: string;
+  hero?: string;
+  preview?: string;
+  tldr?: string;
   images: string[];
   tags: string[];
   content: string;
