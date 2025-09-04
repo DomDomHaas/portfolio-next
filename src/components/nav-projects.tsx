@@ -1,12 +1,5 @@
 "use client"
 
-import { ChevronRight } from "lucide-react"
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -19,7 +12,6 @@ import {
 } from "@/components/ui/sidebar"
 
 import {Project, ProjectItem} from "@/../types/projectTypes";
-import {SidebarSearch} from "@/components/sidebar-search";
 import {useState} from "react";
 
 const subSelectItems = (items: Project[] | ProjectItem[] | undefined, text: string): (Project | ProjectItem)[] => {
@@ -46,9 +38,11 @@ export function NavProjects(
   {
     projects,
     onSelectProject,
+    onSelectProjectItem,
   }: {
     projects: Project[]
     onSelectProject(title: string): void;
+    onSelectProjectItem(title: string): void;
 }) {
 
   const [searchText, setSearchText] = useState<string>('');
@@ -62,52 +56,37 @@ export function NavProjects(
   }
 
   return <SidebarGroup>
-{/*
-    <SidebarSearch onSearchChange={assignSearchText} />
-*/}
 
-{/*
-    <SidebarGroupLabel className="mt-2">Projects</SidebarGroupLabel>
-*/}
-
+    <SidebarGroupLabel className="font-normal text-md ">Projects Highlights</SidebarGroupLabel>
 
     <SidebarMenu>
       {
-        subSelectItems(projects, searchText).map((item) =>
-          <SidebarMenuItem>
+        subSelectItems(projects, searchText).map((item, index) =>
+          <SidebarMenuItem
+            key={`${item.title}_${index}`}
+          >
 
-{/*
-            <CollapsibleTrigger asChild>
-*/}
               <SidebarMenuButton tooltip={item.title}
                                  className="cursor-pointer"
               >
                 <span>{item.title}</span>
-{/*
-                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-*/}
               </SidebarMenuButton>
-{/*
-            </CollapsibleTrigger>
-
-            <CollapsibleContent>
-*/}
               <SidebarMenuSub>
                 {
                   ('items' in item) ?
                     subSelectItems(item?.items, searchText).map((subItem, index) => (
                       <SidebarMenuSubItem
                         key={`${subItem.title}_${index}`}
-                        className={subItem.hidden ? 'hidden' : '' }
                       >
                         <SidebarMenuSubButton asChild
                                               className="cursor-pointer"
+                                              onClick={() => onSelectProjectItem(subItem.title)}
                         >
 {/*
                           isActive={subItem.isActive}
 */}
-                          <a onClick={() => selectProject(subItem.title)}>
-                            <span>{subItem.title}</span>
+                          <a >
+                            {subItem.title}
                           </a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
@@ -115,9 +94,6 @@ export function NavProjects(
                   : null
                 }
               </SidebarMenuSub>
-{/*
-            </CollapsibleContent>
-*/}
           </SidebarMenuItem>
         )
       }

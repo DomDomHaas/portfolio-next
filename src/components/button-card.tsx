@@ -10,10 +10,13 @@ export default function ButtonCard({
 }) {
   return(
     <Button asChild className="bg-slate-400
-                              hover:bg-slate-200 dark:hover:bg-slate-600
+                              hover:bg-slate-200
+                              dark:hover:bg-slate-600
                               text-black dark:text-white
                               rounded-3xl
-                              shadow-md
+                              shadow-none
+                              hover:shadow-md
+                              transition-all
                               ">
       <Link href={url}>{text}</Link>
     </Button>
