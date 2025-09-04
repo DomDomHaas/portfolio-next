@@ -45,7 +45,7 @@ export default function RootLayout({
     >
     <body
       className={`
-        bg-[url('/images/deru_triangle_small.webp')]
+        bg-[url('/images/projects/deru/deru_triangle.webp')]
         bg-center bg-repeat
         bg-cover md:bg-contain
         backdrop-blur-3xl
@@ -81,7 +81,7 @@ export default function RootLayout({
       >
         <div className="flex flex-row">
           <div className="flex-grow justify-self-start">
-            <div className="p-4 text-lg md:text-2xl font-normal"><Link href="/">Dominik Haas</Link></div>
+            <div className="pl-4 pt-4 pr-2 pb-2 text-lg md:text-2xl font-normal"><Link href="/">Dominik Haas</Link></div>
           </div>
 
           <div className="flex-shrink justify-self-end">

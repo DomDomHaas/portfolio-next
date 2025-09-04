@@ -1,30 +1,55 @@
 'use client'
 
-import OverviewCard from "@/components/overview-card";
 import MosaicOverviewCard from "@/components/mosaic-overview-card";
 import {useEffect, useState} from "react";
-import {ProjectItem} from "../../types/projectTypes";
 import {loadProjects} from "@/app/projects/projectsApi";
-import {BlogPost} from "../../types/blogTypes";
 import {loadPosts} from "@/app/blog/blogApi";
 import ProfileImage from "@/components/profile-image";
 import ButtonCard from "@/components/button-card";
+import { PreviewItem } from "../../types/blogTypes";
+import {ProjectItem} from "../../types/projectTypes";
+
+const previewTitles = [
+  'EnviDat Frontend',
+  'Data Visualization at WSL',
+  'DERU',
+];
 
 
 export default function HomePage() {
 
-  const [previews, setPreviews] = useState<ProjectItem[]>([]);
-  const [blogPreviews, setBlogPreviews] = useState<BlogPost[]>([]);
+  const [previews, setPreviews] = useState<PreviewItem[]>([]);
+  const [blogPreviews, setBlogPreviews] = useState<PreviewItem[]>([]);
 
   // on mount
   useEffect(() => {
     loadProjects().then((projects) => {
-      const enviDatProjects = projects[0].items;
-      setPreviews(enviDatProjects.slice(0, 3));
+
+      const previews : PreviewItem[] = [];
+
+      projects.forEach((pro) => {
+        pro.items.forEach((pItem: ProjectItem) => {
+          if (previewTitles.includes(pItem.title)) {
+            previews.push({
+              title: pItem.title,
+              img: pItem.preview || '',
+              content: `/projects/${pItem.content}`,
+            });
+          }
+        })
+      })
+
+      setPreviews(previews.reverse());
     });
 
     loadPosts().then((posts) => {
-      setBlogPreviews(posts.slice(0, 9));
+      setBlogPreviews(posts.slice(0, 3).map((post) => {
+        return {
+          title: post.title,
+          img: post.img,
+          content: `/blog/${post.content}`,
+        };
+      }));
     })
   }, []);
 
@@ -58,9 +83,9 @@ export default function HomePage() {
             </div>
 
             <div className="w-full mt-8 md:mt-0 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
-              <div className="text-xl">Welcome and thanks for the visit.</div>
+              <div className="text-xl">Welcome and thanks for the visit</div>
               <div className="mt-2 text-lg">
-                I'm Dominik Haas an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
+                I'm Dominik Haas-Artho an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
                 interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.
               </div>
 
@@ -99,12 +124,12 @@ export default function HomePage() {
 
             <div className="">
 
-              <OverviewCard
-                title="Recent Projects"
-                previewProjects={previews}
+              <MosaicOverviewCard
+                title="Projects Highlights"
+                previewItems={previews}
               >
                 <ButtonCard text="View" url="/projects" />
-              </OverviewCard>
+              </MosaicOverviewCard>
 
             </div>
           </div>
@@ -117,8 +142,8 @@ export default function HomePage() {
             <div className="h-1/2">
 
               <MosaicOverviewCard
-                title="Latest Blog Posts"
-                blogPosts={blogPreviews}
+                title="Recent Blog Posts"
+                previewItems={blogPreviews}
               >
                 <ButtonCard text="Read" url="/blog" />
               </MosaicOverviewCard>

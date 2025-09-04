@@ -11,8 +11,10 @@ import {useEffect, useState} from "react";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {Project, ProjectItem} from "../../../types/projectTypes";
 import ProjectBody from "@/components/project-body";
+import {useParams, useRouter} from "next/navigation";
 
 
+/*
 const extractProjectTags = (projects: Project[]) => {
   const allTags: Map<string, number> = new Map<string, number>();
 
@@ -40,8 +42,13 @@ const extractProjectTags = (projects: Project[]) => {
 
   return allTags;
 }
+*/
 
 export default function ProjectsList() {
+  const router = useRouter();
+
+  const params = useParams();
+  const preSelectedProjectItem = params.id as string;
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -49,23 +56,29 @@ export default function ProjectsList() {
 
   // on mount
   useEffect(() => {
-    loadProjects().then((projects) => setProjects(projects));
+    loadProjects().then((projects) => {
+      setProjects(projects);
+    });
   }, []);
 
   useEffect(() => {
     if (projects.length > 0) {
-      const autoSelectFirst = projects[0].items[0].title;
-      selectProject(autoSelectFirst);
+      if (preSelectedProjectItem) {
+        selectProject(preSelectedProjectItem);
+      } else {
+        const autoSelectFirst = projects[0].items[0].title;
+        selectProject(autoSelectFirst);
+      }
     }
   }, [projects]);
 
-  const projectTags = extractProjectTags(projects);
+  // const projectTags = extractProjectTags(projects);
 
   const selectProject = (projectItemTitle: string) => {
     projects.forEach((project) => {
       if (project.items) {
         for (const item of project.items) {
-          if (item.title === projectItemTitle) {
+          if (item.title === projectItemTitle || item.content === projectItemTitle) {
             item.isActive = true;
             setSelectedProject(item);
           } else {
@@ -116,6 +129,43 @@ export default function ProjectsList() {
     filterProjects();
   }
 
+  const navigateToFirstProjectItem = (projectTitle: string) => {
+
+    let projectItem: ProjectItem | undefined = undefined;
+
+    for (let i = 0; i < projects.length; i++) {
+      const pro = projects[i];
+      if (pro.title === projectTitle) {
+        projectItem = pro.items[0];
+        break;
+      }
+    }
+
+    if (projectItem) {
+      router.push(`/projects/${projectItem.content}`);
+    }
+
+  }
+
+  const navigateToProjectItem = (projectTitle: string) => {
+
+    let projectItem: ProjectItem | undefined = undefined;
+
+    for (let i = 0; i < projects.length; i++) {
+      for (let j = 0; j < projects[i].items.length; j++) {
+        const item = projects[i].items[j];
+        if (item.title === projectTitle) {
+          projectItem = item;
+          break;
+        }
+      }
+    }
+
+    if (projectItem) {
+      router.push(`/projects/${projectItem.content}`);
+    }
+  }
+
   const loadingProjects = () => projects?.length <= 0;
 /*
   className="grid grid-rows-1 h-svh gap-4 grid-cols-1"
@@ -126,7 +176,6 @@ export default function ProjectsList() {
          className="
           bg-transparent border-0
           min-h-0
-          pt-4
           p-0
           h-full"
     >
@@ -139,7 +188,8 @@ export default function ProjectsList() {
 */}
       <TheProjectSidebar id="TheProjectSidebar"
                          projects={projects}
-                         onSelectProject={(value) => selectProject(value)}
+                         onSelectProject={(title) => navigateToFirstProjectItem(title)}
+                         onSelectProjectItem={(title) => navigateToProjectItem(title)}
                          className="
                          overflow-hidden
                          bg-transparent border-0
@@ -164,7 +214,7 @@ export default function ProjectsList() {
         className="bg-transparent border-0"
       >
 
-        <div className="h-full shrink-0">
+        <div className="h-full">
           {
             selectedProject ? (
               <ProjectBody

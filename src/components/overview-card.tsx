@@ -1,15 +1,15 @@
 import { Card } from "@/components/ui/card"
 import Link from "next/link";
-import {ProjectItem} from "../../types/projectTypes";
+import { PreviewItem } from "../../types/blogTypes";
 
 
 export default function OverviewCard({
   title,
-  previewProjects,
+  previewItems,
   children,
 } : {
   title: string,
-  previewProjects: ProjectItem[],
+  previewItems: PreviewItem[],
   children: React.ReactNode,
 }) {
   return(
@@ -24,7 +24,7 @@ export default function OverviewCard({
 
       <div className="relative overflow-hidden">
         {
-          previewProjects.map((entry, index) => (
+          previewItems.map((entry, index) => (
             <Link key={`${entry.title}_${index}`}
                   href={`/projects/${entry.content}`}
                  className="
@@ -33,7 +33,7 @@ export default function OverviewCard({
                     rounded-md
                     h-[150px]
                     w-[130px]
-                    hover:scale-125
+                    hover:scale-115
                     opacity-100
                     bg-slate-100
                     dark:bg-slate-500
@@ -46,7 +46,7 @@ export default function OverviewCard({
                  }}
             >
 
-              <img src={entry.images[0]} alt={entry.title}
+              <img src={entry.img} alt={entry.title}
                    height={150} width={130}
                    className="rounded-md"
               />

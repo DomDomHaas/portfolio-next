@@ -1,17 +1,22 @@
 import { Card } from "@/components/ui/card"
 import Link from "next/link";
-import {BlogPost} from "../../types/blogTypes";
+import { PreviewItem } from "../../types/blogTypes";
 
 
 export default function MosaicOverviewCard({
   title,
-  blogPosts,
+  previewItems,
+  contain = false,
   children,
 } : {
   title: string,
-  blogPosts: BlogPost[],
+  previewItems: PreviewItem[],
+  contain?: boolean,
   children: React.ReactNode,
 }) {
+
+  const height = previewItems.length === 3 ? 150 : 75;
+
   return(
     <Card id="MosaicOverviewCard"
           className="grid
@@ -26,23 +31,25 @@ export default function MosaicOverviewCard({
 
       <div className="h-[150px] overflow-hidden flex flex-wrap">
         {
-          blogPosts.map((entry, index) => (
+          previewItems.map((entry, index) => (
 
-            <Link href={`/blog/${entry.content}`}
+                    // h-[50px]
+
+            <Link href={entry.content}
                   key={`${entry.title}_${index}`}
-                  className="
+                  className={`
                     basis-1/3
-                    h-[50px]
-                    hover:scale-110
+                    h-[${height}px]
+                    hover:scale-115
                     transition-all
-                  "
+                  `}
             >
               <img src={entry.img} alt={entry.title}
-                   height={50} width={50}
+                   height={height}
                    className={`
-                    h-[50px]
+                    h-[${height}px]
                     w-full
-                    object-cover
+                    ${ contain ? 'object-contain' : 'object-cover' }
                     ${index === 0 ? 'rounded-tl-xl' : ''}
                     ${index === 2 ? 'rounded-tr-xl' : ''}                   
                    `}
