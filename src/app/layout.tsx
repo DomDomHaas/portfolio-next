@@ -5,6 +5,7 @@ import "./globals.css";
 import '@/app/github-markdown.css';
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import {useDark} from "@/hooks/useDark";
 
 
@@ -46,7 +47,7 @@ export default function RootLayout({
   const {isDark, setIsDark } = useDark();
   const onDarkToggle = () => { setIsDark(!isDark) };
 
-  const path = window.location.pathname;
+  const path = usePathname(); // window?.location.pathname || '/';
 
   NavEntries.forEach((entity) => {
     entity.active = entity.title === path;

@@ -44,11 +44,18 @@ const extractProjectTags = (projects: Project[]) => {
 }
 */
 
-export default function ProjectsList() {
+export default function ProjectsList({
+  projectItemId,
+} : {
+  projectItemId?: string,
+}) {
   const router = useRouter();
+  let preSelectedProjectItem = projectItemId;
 
-  const params = useParams();
-  const preSelectedProjectItem = params.id as string;
+  if (!preSelectedProjectItem) {
+    const params = useParams();
+    preSelectedProjectItem = params.id as string;
+  }
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([])
