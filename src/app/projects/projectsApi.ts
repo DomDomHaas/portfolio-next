@@ -2,7 +2,7 @@ import {marked} from "marked";
 import {Project} from "../../../types/projectTypes";
 
 export const loadProjects = async () : Promise<Project[]> => {
-  const response = await fetch(`/content/projects/projects.json`);
+  const response = await fetch('/content/projects/projects.json');
   const json = await response.json();
   return json.projects;
 }

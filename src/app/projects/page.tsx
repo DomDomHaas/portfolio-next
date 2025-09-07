@@ -110,15 +110,8 @@ export default function ProjectsList() {
           })
         }
       });
-
-/*
-      if (matches.length > 0) {
-        filtered = [...filtered, ...matches];
-      }
-*/
     }
 
-    // return filtered;
   }
 
   const toggleTagSelected = (toggleTag: string) => {
