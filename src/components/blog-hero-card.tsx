@@ -23,9 +23,9 @@ export default function BlogHeroCard({
                       xl:grid-cols-[700px_auto]
                       h-[200px] md:h-[250px] lg:h-full
                       gap-0 overflow-hidden py-0
-                      bg-slate-200/50
+                      bg-slate-200/30
                       border-0
-                      dark:bg-slate-500/50
+                      dark:bg-slate-500/40
                       relative
                       rounded-xl
                       ">

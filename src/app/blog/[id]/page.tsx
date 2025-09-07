@@ -7,6 +7,7 @@ import {loadPostContent, loadPostHeadImg } from "@/app/blog/blogApi";
 import {Button} from "@/components/ui/button";
 import {CircleX} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
+import {useDark} from "@/hooks/useDark";
 
 
 export default function BlogPost() {
@@ -18,12 +19,13 @@ export default function BlogPost() {
   const params = useParams();
   const postId = params.id as string;
 
-  const [isDark, setIsDark] = useState(true)
+  const {isDark} = useDark();
   const [postImg, setPostImg] = useState('')
 
   const [html, setHtml] = useState<string | null>(null)
 
   // on mount
+/*
   useEffect(() => {
     const updateDark = () => {
       setIsDark(document.documentElement.classList.contains('dark'));
@@ -36,6 +38,7 @@ export default function BlogPost() {
 
     return () => observer.disconnect();
   }, []);
+*/
 
 
   useEffect(() => {

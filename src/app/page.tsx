@@ -10,9 +10,9 @@ import { PreviewItem } from "../../types/blogTypes";
 import {ProjectItem} from "../../types/projectTypes";
 
 const previewTitles = [
-  'EnviDat Frontend',
-  'Data Visualization at WSL',
-  'DERU',
+  "EnviDat Frontend",
+  "Data Visualization at WSL",
+  "DERU",
 ];
 
 

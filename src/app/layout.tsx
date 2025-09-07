@@ -5,6 +5,7 @@ import "./globals.css";
 import '@/app/github-markdown.css';
 import TheNavigation, {NavEntry} from "@/components/the-navigation";
 import Link from "next/link";
+import {useDark} from "@/hooks/useDark";
 
 
 const raleway = Raleway({
@@ -19,7 +20,8 @@ const raleway = Raleway({
 const NavEntries : NavEntry[] = [
   {
     title: 'Projects',
-    href: '/projects'
+    href: '/projects',
+    active: false
   },
 /*
   {
@@ -29,7 +31,8 @@ const NavEntries : NavEntry[] = [
 */
   {
     title: 'Blog',
-    href: '/blog'
+    href: '/blog',
+    active: false
   },
 ]
 
@@ -39,10 +42,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const {isDark, setIsDark } = useDark();
+  const onDarkToggle = () => { setIsDark(!isDark) };
+
+  const path = window.location.pathname;
+
+  NavEntries.forEach((entity) => {
+    entity.active = entity.title === path;
+  })
+
+
   return (
-    <html lang="en"
-          className=""
-    >
+    <html lang="en" className={`${isDark ? "dark" : ""}`} >
     <body
       className={`
         bg-[url('/images/projects/deru/deru_triangle.webp')]
@@ -56,11 +68,11 @@ export default function RootLayout({
 
     <div id="rootGrid"
       className="grid
-                 grid-rows-[64px_auto_32px]
+                 grid-rows-[64px_auto]
                  grid-cols-1
                  h-screen
                  font-[family-name:var(--font-geist-sans)]
-                 bg-slate-100/50 dark:bg-slate-600/50
+                 bg-slate-100/50 dark:bg-slate-600/60
                  p-2
                  md:pt-2
                  "
@@ -85,7 +97,11 @@ export default function RootLayout({
           </div>
 
           <div className="flex-shrink justify-self-end">
-            <TheNavigation entries={NavEntries}/>
+            <TheNavigation
+              entries={NavEntries}
+              isDark={isDark}
+              onDarkToggle={onDarkToggle}
+            />
           </div>
         </div>
       </header>
@@ -111,11 +127,12 @@ export default function RootLayout({
         {children}
       </main>
 
+{/*
       <footer
         id="rootFoot"
       >
-
       </footer>
+*/}
 
     </div>
     </body>

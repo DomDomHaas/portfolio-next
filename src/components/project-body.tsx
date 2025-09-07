@@ -198,8 +198,28 @@ export default function ProjectBody({
           }
         </CarouselContent>
 
-        <CarouselPrevious className="dark:bg-slate-500" />
-        <CarouselNext className="dark:bg-slate-500" />
+        <CarouselPrevious
+          className="
+                  border-0
+                  bg-slate-400
+                  hover:bg-slate-200
+                  dark:bg-slate-400
+                  dark:hover:bg-slate-500
+                  shadow-md
+                  text-black hover:dark:text-white
+                  "
+        />
+        <CarouselNext
+          className="
+                  border-0
+                  bg-slate-400
+                  hover:bg-slate-200
+                  dark:bg-slate-400
+                  dark:hover:bg-slate-500
+                  shadow-md
+                  text-black hover:dark:text-white
+                  "
+        />
       </Carousel>
       </div>
 
@@ -250,10 +270,22 @@ export default function ProjectBody({
               </CarouselContent>
 
               <CarouselPrevious
-                className="left-1 bg-slate-500 dark:bg-slate-200"
+                className="
+                  left-1
+                  bg-slate-400
+                  hover:bg-slate-200
+                  dark:hover:bg-slate-600
+                  text-black dark:text-white
+                "
               />
               <CarouselNext
-                className="right-1 bg-slate-500 dark:bg-slate-200"
+                className="
+                  right-1
+                  bg-slate-400
+                  hover:bg-slate-200
+                  dark:hover:bg-slate-600
+                  text-black dark:text-white
+                "
               />
             </Carousel>
 

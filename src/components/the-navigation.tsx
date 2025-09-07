@@ -8,22 +8,24 @@ import {
 } from "@/components/ui/navigation-menu"
 
 import {Moon, Sun} from "lucide-react"
-import {useState} from "react";
 import {Button} from "@/components/ui/button";
 
 export type NavEntry = {
   title: string,
   href: string,
+  active: boolean,
 }
 
-export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
-
-  const [isDark, setIsDark] = useState(true)
-
-  const toggleIsDark = () => {
-    document.body.classList.toggle("dark");
-    setIsDark(!isDark);
-  }
+export default function TheNavigation (
+  {
+    entries,
+    isDark,
+    onDarkToggle,
+  }: {
+    entries: NavEntry[],
+    isDark: boolean,
+    onDarkToggle(): void,
+  }){
 
   return (
     <NavigationMenu
@@ -36,6 +38,7 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
             <NavigationMenuItem key={entry.href}>
 
               <NavigationMenuLink href={entry.href}
+                                  active={entry.active}
                                   className="font-normal text-lg"
               >
                 {entry.title}
@@ -46,11 +49,13 @@ export default function TheNavigation ({ entries }: { entries: NavEntry[] }){
         }
 
         <Button aria-roledescription="button"
-                onClick={toggleIsDark}
+                onClick={onDarkToggle}
                 variant="ghost"
                 size="icon"
         >
-          { isDark ? ( <Moon /> ) : ( <Sun /> )}
+          {
+            isDark ? <Moon /> : <Sun />
+          }
         </Button>
 
       </NavigationMenuList>

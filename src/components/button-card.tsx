@@ -11,8 +11,9 @@ export default function ButtonCard({
   return(
     <Button asChild className="bg-slate-400
                               hover:bg-slate-200
+                              dark:bg-slate-400
                               dark:hover:bg-slate-600
-                              text-black dark:text-white
+                              text-black hover:dark:text-white
                               rounded-3xl
                               shadow-none
                               hover:shadow-md
