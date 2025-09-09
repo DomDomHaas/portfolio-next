@@ -4,7 +4,6 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarRail,
 } from "@/components/ui/sidebar"
 
 import {NavProjects} from '@/components/nav-projects'
@@ -77,7 +76,6 @@ export function TheProjectSidebar(
         {children}
       </SidebarFooter>
 
-      <SidebarRail />
     </Sidebar>
   )
 }

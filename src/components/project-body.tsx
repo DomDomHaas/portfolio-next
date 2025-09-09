@@ -133,13 +133,6 @@ export default function ProjectBody({
   }
 
   return (
-
-/*
-    grid-rows-[48px_185px_1fr]
-                    grid
-                    grid-rows-[235px_1fr_2fr]
-*/
-
     <div id="projectBody"
          className="flex flex-col
                     bg-transparent
@@ -158,6 +151,7 @@ export default function ProjectBody({
     >
 
       <SidebarTrigger className="
+                        md:hidden
                         absolute top-1 left-0
                         m-1 p-5 md:p-5
                         bg-slate-400
@@ -274,12 +268,15 @@ export default function ProjectBody({
         <Dialog modal
                 open={isOpen} onOpenChange={setIsOpen}
         >
-          <DialogContent className="
+          <DialogContent
+            aria-describedby={imageTitle}
+            className="
                     bg-slate-300
                     dark:bg-slate-500
                     noise
                     p-0
-                    h-full w-full">
+                    h-full w-full"
+          >
 
             <DialogHeader className="absolute left-1 top-1" >
               <DialogTitle className="z-100">

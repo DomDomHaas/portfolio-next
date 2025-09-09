@@ -39,7 +39,6 @@ export default function TheNavigation (
 
               <NavigationMenuLink
                 href={entry.href}
-                active={entry.active}
                 className={`m-2 my-2 p-2 py-1
                   dark:hover:bg-slate-800/50 hover:bg-slate-300/50
                   ${entry.active ? 'dark:bg-slate-800 bg-slate-300' : ''}
