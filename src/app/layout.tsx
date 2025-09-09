@@ -50,7 +50,7 @@ export default function RootLayout({
   const path = usePathname(); // window?.location.pathname || '/';
 
   NavEntries.forEach((entity) => {
-    entity.active = entity.title === path;
+    entity.active = entity.href === path;
   })
 
 
@@ -69,7 +69,7 @@ export default function RootLayout({
 
     <div id="rootGrid"
       className="grid
-                 grid-rows-[64px_auto]
+                 grid-rows-[52px_auto]
                  grid-cols-1
                  h-screen
                  font-[family-name:var(--font-geist-sans)]
@@ -94,7 +94,12 @@ export default function RootLayout({
       >
         <div className="flex flex-row">
           <div className="flex-grow justify-self-start">
-            <div className="pl-4 pt-4 pr-2 pb-2 text-lg md:text-2xl font-normal"><Link href="/">Dominik Haas</Link></div>
+            <div className="m-2 text-lg md:text-2xl font-normal">
+              <Link href="/" className={`border-b-slate-600 dark:border-b-accent
+                dark:hover:bg-slate-800/50 hover:bg-slate-300/50
+                mx-0 my-4 p-2 py-1 rounded-md
+              `}>Dominik Haas</Link>
+            </div>
           </div>
 
           <div className="flex-shrink justify-self-end">

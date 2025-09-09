@@ -30,16 +30,21 @@ export default function TheNavigation (
   return (
     <NavigationMenu
       id="HeaderNavigation"
-      className="NavigationMenuRoot w-full max-w-full p-2">
+      className="NavigationMenuRoot w-full max-w-full px-2">
 
       <NavigationMenuList className="NavigationMenuList">
         {
           entries.map((entry) => (
             <NavigationMenuItem key={entry.href}>
 
-              <NavigationMenuLink href={entry.href}
-                                  active={entry.active}
-                                  className="font-normal text-lg"
+              <NavigationMenuLink
+                href={entry.href}
+                active={entry.active}
+                className={`m-2 my-2 p-2 py-1
+                  dark:hover:bg-slate-800/50 hover:bg-slate-300/50
+                  ${entry.active ? 'dark:bg-slate-800 bg-slate-300' : ''}
+                  font-normal text-lg
+                `}
               >
                 {entry.title}
               </NavigationMenuLink>
@@ -50,6 +55,7 @@ export default function TheNavigation (
 
         <Button aria-roledescription="button"
                 onClick={onDarkToggle}
+                className="dark:hover:bg-slate-800/50 hover:bg-slate-300/50"
                 variant="ghost"
                 size="icon"
         >
