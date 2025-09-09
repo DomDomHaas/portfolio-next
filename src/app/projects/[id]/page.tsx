@@ -17,10 +17,6 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default function SpecificProject({
-  params,
-} : {
-  params: { id: string },
-}) {
-  return <ProjectsList  />
+export default function SpecificProject() {
+  return <ProjectsList />
 }

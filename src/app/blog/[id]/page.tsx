@@ -9,10 +9,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function SpecificBlog({
-  params,
-} : {
-  params: { id: string },
-}) {
-  return <BlogPost  />
+export default function SpecificBlog() {
+  return <BlogPost />
 }

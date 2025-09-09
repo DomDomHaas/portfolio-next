@@ -44,18 +44,11 @@ const extractProjectTags = (projects: Project[]) => {
 }
 */
 
-export default function ProjectsList({
-  projectItemId,
-} : {
-  projectItemId?: string,
-}) {
+export default function ProjectsList() {
   const router = useRouter();
-  let preSelectedProjectItem = projectItemId;
 
-  if (!preSelectedProjectItem) {
-    const params = useParams();
-    preSelectedProjectItem = params.id as string;
-  }
+  const params = useParams();
+  const preSelectedProjectItem = params.id as string;
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -77,7 +70,7 @@ export default function ProjectsList({
         selectProject(autoSelectFirst);
       }
     }
-  }, [projects]);
+  }, [projects, preSelectedProjectItem]);
 
   // const projectTags = extractProjectTags(projects);
 

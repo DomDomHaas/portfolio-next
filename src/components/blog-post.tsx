@@ -10,22 +10,15 @@ import {Skeleton} from "@/components/ui/skeleton";
 import {useDark} from "@/hooks/useDark";
 
 
-export default function BlogPost({
-  postId,
-} : {
-  postId?: string,
-}) {
+export default function BlogPost() {
   const router = useRouter();
+  const params = useParams();
+  const postId = params.id as string;
+
   const navigateToBlogList = () => {
     router.push('/blog');
   }
 
-  let preSelectedBlog = postId;
-
-  if (!preSelectedBlog) {
-    const params = useParams();
-    preSelectedBlog = params.id as string;
-  }
 
   const {isDark} = useDark();
   const [postImg, setPostImg] = useState('')
