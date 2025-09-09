@@ -1,12 +1,14 @@
 import {BlogPost} from "../../types/blogTypes";
 import ButtonCard from "@/components/button-card";
 
+type BlogCardProps = Omit<BlogPost, 'img'> & { children?: React.ReactNode; }
+
 export default function BlogCardBody({
  title,
  description,
  content,
  children,
-} : BlogPost & { children?: React.ReactNode; }) {
+} : BlogCardProps) {
   return (
     <div id="BlogCardBody"
          className="
@@ -24,16 +26,6 @@ export default function BlogCardBody({
 
       <div className="h-auto justify-self-end content-end">
         <ButtonCard text="Read" url={`/blog/${content}`} />
-
-{/*
-        <Button asChild className="shadow-md"
-                variant="outline"
-        >
-          <Link href={"/blog/" + content}>
-            <NotebookText /> Read
-          </Link>
-        </Button>
-*/}
 
         {children}
       </div>

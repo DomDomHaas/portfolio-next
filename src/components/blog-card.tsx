@@ -25,6 +25,7 @@ export default function BlogCard({
                      dark:bg-slate-500/40
                      h-[400px]
                      rounded-xl
+                     hover:shadow-md
           ">
 
       <div className="h-full overflow-hidden">
@@ -37,7 +38,7 @@ export default function BlogCard({
         }
       </div>
 
-      <BlogCardBody title={title} img={img} description={description} content={content} />
+      <BlogCardBody title={title} description={description} content={content} />
 
     </Card>
   )

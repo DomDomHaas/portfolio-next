@@ -28,10 +28,11 @@ export default function BlogHeroCard({
                       dark:bg-slate-500/40
                       relative
                       rounded-xl
+                      hover:shadow-md
                       ">
 
 
-      <BlogCardBody title={title} img={img} description={description} content={content} />
+      <BlogCardBody title={title} description={description} content={content} />
 
       {
         img ? (
