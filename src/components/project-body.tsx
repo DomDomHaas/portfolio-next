@@ -5,8 +5,10 @@ import {useEffect, useState} from "react";
 import {loadProjectContent} from "@/app/projects/projectsApi";
 
 import {
-  Dialog, DialogClose,
-  DialogContent, DialogHeader, DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog"
 
 import {
@@ -272,18 +274,18 @@ export default function ProjectBody({
         <Dialog modal
                 open={isOpen} onOpenChange={setIsOpen}
         >
-          <DialogHeader >
-            <DialogTitle >
-              {imageTitle}
-            </DialogTitle>
-          </DialogHeader>
-
           <DialogContent className="
                     bg-slate-300
                     dark:bg-slate-500
                     noise
-                    overflow-auto
-                    max-w-full h-full w-full p-0">
+                    p-0
+                    h-full w-full">
+
+            <DialogHeader className="absolute left-1 top-1" >
+              <DialogTitle className="z-100">
+                {imageTitle}
+              </DialogTitle>
+            </DialogHeader>
 
             <Carousel className="w-full p-0
                                  self-center justify-self-center"
