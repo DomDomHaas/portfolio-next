@@ -73,13 +73,13 @@ export default function ProjectBody({
 
   const nextImageTitle = () => {
     const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);
-    let newIndex = currentIndex + 1;
+    const newIndex = currentIndex + 1;
     setNewImageTitle(newIndex);
   }
 
   const prevImageTitle = () => {
     const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);
-    let newIndex = currentIndex - 1;
+    const newIndex = currentIndex - 1;
     setNewImageTitle(newIndex);
   }
 
