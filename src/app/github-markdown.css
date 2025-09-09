@@ -8,7 +8,7 @@
   --base-text-weight-medium: 500;
   --base-text-weight-semibold: 600;
   --fontStack-monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-  --fgColor-accent: Highlight;
+  --fgColor-accent: blue;
 }
 
 .markdown-body {
@@ -66,7 +66,7 @@
 
 .markdown-body a {
   background-color: transparent;
-  color: var(--fgColor-accent);
+  color: var(--anchor-color);
   text-decoration: none;
 }
 
