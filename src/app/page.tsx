@@ -85,19 +85,19 @@ export default function HomePage() {
             <div className="w-full mt-8 md:mt-0 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
               <div className="text-xl">Welcome and thanks for the visit</div>
               <div className="mt-2 text-lg">
-                I'm Dominik Haas-Artho an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
-                interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.
+                {`I'm Dominik Haas-Artho an Application Engineer. 2005 I've started with my professional Software Engineering journey. Since then I love creating
+                interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.`}
               </div>
 
               <div className="mt-4">
                 <div className="text-xl">Work Experience</div>
                 <div className="mt-2 text-lg">
-                I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D
+                {`I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D
                 Games.
                 I take care of the full software lifecycle from design stage to deployment. I've lead teams as senior
                 engineer in all concerns of
                 software engineering and design.
-                I enjoy rapid prototyping as much as working on high quality, solid architectures.
+                I enjoy rapid prototyping as much as working on high quality, solid architectures.`}
                 </div>
               </div>
 
