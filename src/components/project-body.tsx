@@ -5,8 +5,8 @@ import {useEffect, useState} from "react";
 import {loadProjectContent} from "@/app/projects/projectsApi";
 
 import {
-  Dialog,
-  DialogContent,
+  Dialog, DialogClose,
+  DialogContent, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog"
 
 import {
@@ -53,21 +53,48 @@ export default function ProjectBody({
 
   const [isOpen, setIsOpen] = useState(false)
   const [dialogImages, setDialogImages] = useState(projectItem.images || [])
+  const [imageTitle, setImageTitle] = useState('')
 
 
   const openDialog = (image: string) => {
     setIsOpen(true);
 
     const currentIndex = dialogImages.findIndex((img) => img === image);
-
     const back = dialogImages.slice(currentIndex + 1, dialogImages.length + 1);
     const front = dialogImages.slice(0, currentIndex);
 
     const newSequence = [image, ...front, ...back];
 
     setDialogImages(newSequence);
+    setImageTitle(getImageTitle(image));
   }
 
+  const nextImageTitle = () => {
+    const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);
+    let newIndex = currentIndex + 1;
+    setNewImageTitle(newIndex);
+  }
+
+  const prevImageTitle = () => {
+    const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);
+    let newIndex = currentIndex - 1;
+    setNewImageTitle(newIndex);
+  }
+
+  const setNewImageTitle = (newIndex: number) => {
+    if (newIndex > dialogImages.length - 1) {
+      newIndex = 0;
+    } else if (newIndex <= 0) {
+      newIndex = dialogImages.length - 1;
+    }
+
+    setImageTitle(getImageTitle(dialogImages[newIndex]));
+  }
+  
+  const getImageTitle = (image: string) => {
+    const splits = image.split('/');
+    return splits[splits.length - 1];
+  }
 
   if (loading) {
     return (
@@ -177,11 +204,14 @@ export default function ProjectBody({
 
                   <Button
                     className="absolute
-                                top-0 right-0
+                                top-1 right-1
+                                md:top-0 md:right-0
                                 md:w-full md:h-full
+                                md:rounded-sm
                                 opacity-70
                                 md:opacity-0
                                 bg-slate-200
+                                dark:bg-slate-400
                                 md:bg-transparent
                                 hover:opacity-50
                                 transition-opacity
@@ -200,25 +230,30 @@ export default function ProjectBody({
 
         <CarouselPrevious
           className="
-                  border-0
+                  border-slate-300
                   bg-slate-400
                   hover:bg-slate-200
                   dark:bg-slate-400
                   dark:hover:bg-slate-500
                   shadow-md
-                  text-black hover:dark:text-white
+                  text-black dark:text-white
+                  p-5
                   "
+          onPrev={prevImageTitle}
         />
+
         <CarouselNext
           className="
-                  border-0
+                  border-slate-300
                   bg-slate-400
                   hover:bg-slate-200
                   dark:bg-slate-400
                   dark:hover:bg-slate-500
                   shadow-md
-                  text-black hover:dark:text-white
+                  text-black dark:text-white
+                  p-5
                   "
+          onNext={nextImageTitle}
         />
       </Carousel>
       </div>
@@ -237,6 +272,12 @@ export default function ProjectBody({
         <Dialog modal
                 open={isOpen} onOpenChange={setIsOpen}
         >
+          <DialogHeader >
+            <DialogTitle >
+              {imageTitle}
+            </DialogTitle>
+          </DialogHeader>
+
           <DialogContent className="
                     bg-slate-300
                     dark:bg-slate-500
@@ -252,16 +293,12 @@ export default function ProjectBody({
                 {
                   dialogImages.map((image, i) => (
                     <CarouselItem
-                      className="h-full"
+                      className="h-lvh w-full content-center justify-items-center"
                       key={i}
                       id={`CarouselItem_${i}`}
                     >
-                        <img className="aspect-square
-                                  rounded-xl
-                                  overflow-hidden
-                                  object-contain
-                                  object-center
-                                  w-full h-full
+                        <img className="px-2
+                                  max-h-full max-w-full
                                   "
                              src={image} alt={image}/>
                     </CarouselItem>
@@ -271,26 +308,44 @@ export default function ProjectBody({
 
               <CarouselPrevious
                 className="
-                  left-1
+                  border-slate-300
                   bg-slate-400
+                  dark:bg-slate-400
                   hover:bg-slate-200
                   dark:hover:bg-slate-600
                   text-black dark:text-white
+                  shadow-md
+                  p-6
+                  left-2
+                  md:left-5
+                  lg:fixed
+                  lg:top-1/2
                 "
+                onPrev={prevImageTitle}
               />
+
               <CarouselNext
                 className="
-                  right-1
+                  border-slate-300
                   bg-slate-400
+                  dark:bg-slate-400
                   hover:bg-slate-200
                   dark:hover:bg-slate-600
                   text-black dark:text-white
+                  shadow-md
+                  p-6
+                  right-2
+                  md:right-5
+                  lg:fixed
+                  lg:top-1/2
                 "
+                onNext={nextImageTitle}
               />
             </Carousel>
 
 
           </DialogContent>
+
         </Dialog>
       </div>
     </div>

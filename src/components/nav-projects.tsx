@@ -40,7 +40,7 @@ export function NavProjects(
     onSelectProject,
     onSelectProjectItem,
   }: {
-    projects: Project[]
+    projects: Project[];
     onSelectProject(title: string): void;
     onSelectProjectItem(title: string): void;
 }) {
