@@ -11,28 +11,8 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-import {Project, ProjectItem} from "@/../types/projectTypes";
-import {useState} from "react";
+import {Project} from "@/../types/projectTypes";
 
-const subSelectItems = (items: Project[] | ProjectItem[] | undefined, text: string): (Project | ProjectItem)[] => {
-  if (!items || !items.length) {
-    return [];
-  }
-
-  const foundItems: (Project | ProjectItem)[] = items.filter((item) => item.title.toLowerCase().includes(text.toLowerCase()));
-
-  items.forEach((item) => {
-    if ('items' in item) {
-      const project = item as Project;
-      const subs = subSelectItems(project.items, text);
-      if (subs.length > 0 && !foundItems.includes(item)) {
-        foundItems.push(item);
-      }
-    }
-  })
-
-  return foundItems; // .sort((a,b) => a.title.localeCompare(b.title));
-}
 
 export function NavProjects(
   {
@@ -45,15 +25,6 @@ export function NavProjects(
     onSelectProjectItem(title: string): void;
 }) {
 
-  const [searchText, setSearchText] = useState<string>('');
-
-  const assignSearchText = (text: string) => {
-    setSearchText(text);
-  }
-
-  const selectProject = (title: string) => {
-    onSelectProject(title)
-  }
 
   return <SidebarGroup>
 
@@ -61,30 +32,30 @@ export function NavProjects(
 
     <SidebarMenu>
       {
-        subSelectItems(projects, searchText).map((item, index) =>
+        projects.map((item, index) =>
           <SidebarMenuItem
             key={`${item.title}_${index}`}
           >
 
               <SidebarMenuButton tooltip={item.title}
                                  className="cursor-pointer"
+                                 onClick={() => onSelectProject(item.title)}
               >
                 <span>{item.title}</span>
               </SidebarMenuButton>
               <SidebarMenuSub>
                 {
                   ('items' in item) ?
-                    subSelectItems(item?.items, searchText).map((subItem, index) => (
+                    item?.items.map((subItem, index) => (
                       <SidebarMenuSubItem
                         key={`${subItem.title}_${index}`}
                       >
                         <SidebarMenuSubButton asChild
-                                              className="cursor-pointer"
+                                              className={`cursor-pointer
+                                                ${subItem.isActive ? 'dark:bg-slate-800/50 bg-slate-300/50' : ''}
+                                              `}
                                               onClick={() => onSelectProjectItem(subItem.title)}
                         >
-{/*
-                          isActive={subItem.isActive}
-*/}
                           <a >
                             {subItem.title}
                           </a>

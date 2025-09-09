@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card"
 import Link from "next/link";
 import { PreviewItem } from "../../types/blogTypes";
-import {useState} from "react";
 
 
 export default function MosaicOverviewCard({
@@ -17,8 +16,6 @@ export default function MosaicOverviewCard({
 }) {
 
   const height = previewItems.length === 3 ? 150 : 75;
-  const [isHover, setIsHover] = useState(false);
-
 
   return(
     <Card id="MosaicOverviewCard"
@@ -32,11 +29,6 @@ export default function MosaicOverviewCard({
                      rounded-xl
                      hover:shadow-md
           "
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-          style={{
-            transform: `${ isHover ? 'translate(0px, -1px)' : '' }`,
-          }}
     >
 
       <div className="h-[150px] overflow-hidden flex flex-wrap">
