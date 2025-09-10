@@ -13,6 +13,7 @@ import {
 
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -32,8 +33,14 @@ export default function ProjectBody({
   projectItem: ProjectItem,
 }) {
 
-  const [isDark, setIsDark] = useState(true)
-  const [html, setHtml] = useState<string | null>(null)
+  const [isDark, setIsDark] = useState(true);
+  const [html, setHtml] = useState<string | null>(null);
+  const [api, setApi] = useState<CarouselApi>();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const dialogImages = projectItem.images || [];
+  // const [dialogImages, setDialogImages] = useState(projectItem.images || [])
+  const [imageTitle, setImageTitle] = useState('');
 
   // on mount
   useEffect(() => {
@@ -49,25 +56,19 @@ export default function ProjectBody({
     return () => observer.disconnect();
   }, []);
 
+  api?.on("init", () => {
+    const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);
+    api?.scrollTo(currentIndex, true);
+  });
+
+
   useEffect(() => {
     loadProjectContent(projectItem.content).then((renderedHtml: string) => setHtml(renderedHtml));
   }, [projectItem])
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [dialogImages, setDialogImages] = useState(projectItem.images || [])
-  const [imageTitle, setImageTitle] = useState('')
-
 
   const openDialog = (image: string) => {
     setIsOpen(true);
-
-    const currentIndex = dialogImages.findIndex((img) => img === image);
-    const back = dialogImages.slice(currentIndex + 1, dialogImages.length + 1);
-    const front = dialogImages.slice(0, currentIndex);
-
-    const newSequence = [image, ...front, ...back];
-
-    setDialogImages(newSequence);
     setImageTitle(getImageTitle(image));
   }
 
@@ -284,8 +285,9 @@ export default function ProjectBody({
               </DialogTitle>
             </DialogHeader>
 
-            <Carousel className="w-full p-0
-                                 self-center justify-self-center"
+            <Carousel setApi={setApi}
+              className="w-full p-0
+                         self-center justify-self-center"
             >
               <CarouselContent id="CarouselContent"
                                className="w-full h-full md:h-auto py-2">
