@@ -46,7 +46,8 @@ export default function RootLayout({
                  h-screen
                  font-[family-name:var(--font-geist-sans)]
                  bg-slate-100/50 dark:bg-slate-600/60
-                 p-2
+                 p-0
+                 sm:p-2
                  md:pt-2
                  "
     >

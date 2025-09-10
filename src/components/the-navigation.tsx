@@ -56,20 +56,21 @@ export default function TheNavigation (
   return (
     <div className="flex flex-row">
       <div className="flex-grow justify-self-start">
-        <div className="m-2 text-lg md:text-2xl font-normal">
+        <div className="m-2 mr-0 text-md sm:text-lg md:text-2xl font-normal">
           <a onClick={navigateToHome}
-            className={`border-b-slate-600 dark:border-b-accent
+            className="
+              border-b-slate-600 dark:border-b-accent
               dark:hover:bg-slate-800/50 hover:bg-slate-300/50
               mx-0 my-4 p-2 py-1 rounded-md
               cursor-pointer
-            `}>Dominik Haas</a>
+            ">Dominik Haas</a>
         </div>
       </div>
 
       <div className="flex-shrink justify-self-end">
         <NavigationMenu
           id="HeaderNavigation"
-          className="NavigationMenuRoot w-full max-w-full px-2">
+          className="NavigationMenuRoot w-full max-w-full pr-2">
 
           <NavigationMenuList className="NavigationMenuList">
             {
@@ -80,7 +81,7 @@ export default function TheNavigation (
                     href={entry.href}
                     className={`m-2 my-2 p-2 py-1
                       dark:hover:bg-slate-800/50 hover:bg-slate-300/50
-                      font-normal text-lg
+                      font-normal text-md sm:text-lg
                       ${path !== "/" && path.includes(entry.href) ? 'dark:bg-slate-800 bg-slate-300' : ''}
                     `}
 >
