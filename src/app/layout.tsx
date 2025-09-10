@@ -3,9 +3,7 @@
 import {Raleway} from "next/font/google";
 import "./globals.css";
 import '@/app/github-markdown.css';
-import TheNavigation, {NavEntry} from "@/components/the-navigation";
-import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import TheNavigation from "@/components/the-navigation";
 import {useDark} from "@/hooks/useDark";
 
 
@@ -18,40 +16,14 @@ const raleway = Raleway({
 
 
 
-const NavEntries : NavEntry[] = [
-  {
-    title: 'Projects',
-    href: '/projects',
-    active: false
-  },
-/*
-  {
-    title: 'Skills',
-    href: '/skills'
-  },
-*/
-  {
-    title: 'Blog',
-    href: '/blog',
-    active: false
-  },
-]
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  
   const {isDark, setIsDark } = useDark();
   const onDarkToggle = () => { setIsDark(!isDark) };
-
-  const path = usePathname(); // window?.location.pathname || '/';
-
-  NavEntries.forEach((entity) => {
-    entity.active = entity.href === path;
-  })
 
 
   return (
@@ -92,24 +64,12 @@ export default function RootLayout({
           noise
         "
       >
-        <div className="flex flex-row">
-          <div className="flex-grow justify-self-start">
-            <div className="m-2 text-lg md:text-2xl font-normal">
-              <Link href="/" className={`border-b-slate-600 dark:border-b-accent
-                dark:hover:bg-slate-800/50 hover:bg-slate-300/50
-                mx-0 my-4 p-2 py-1 rounded-md
-              `}>Dominik Haas</Link>
-            </div>
-          </div>
 
-          <div className="flex-shrink justify-self-end">
-            <TheNavigation
-              entries={NavEntries}
-              isDark={isDark}
-              onDarkToggle={onDarkToggle}
-            />
-          </div>
-        </div>
+        <TheNavigation
+          isDark={isDark}
+          onDarkToggle={onDarkToggle}
+        />
+
       </header>
 
       <main

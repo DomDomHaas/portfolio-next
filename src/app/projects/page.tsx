@@ -61,19 +61,6 @@ export default function ProjectsList() {
     });
   }, []);
 
-  useEffect(() => {
-    if (projects.length > 0) {
-      if (preSelectedProjectItem) {
-        selectProject(preSelectedProjectItem);
-      } else {
-        const autoSelectFirst = projects[0].items[0].title;
-        selectProject(autoSelectFirst);
-      }
-    }
-  }, [projects, preSelectedProjectItem]);
-
-  // const projectTags = extractProjectTags(projects);
-
   const selectProject = (projectItemTitle: string) => {
     projects.forEach((project) => {
       if (project.items) {
@@ -88,6 +75,21 @@ export default function ProjectsList() {
       }
     })
   }
+
+  useEffect(() => {
+    if (projects.length > 0) {
+      if (preSelectedProjectItem) {
+        selectProject(preSelectedProjectItem);
+      } else {
+        const autoSelectFirst = projects[0].items[0].title;
+        selectProject(autoSelectFirst);
+      }
+    }
+  }, [projects, preSelectedProjectItem]);
+
+  // const projectTags = extractProjectTags(projects);
+
+
 
   const filterProjects = () => {
 /*
