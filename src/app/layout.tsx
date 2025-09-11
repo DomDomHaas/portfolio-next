@@ -33,7 +33,7 @@ export default function RootLayout({
         bg-[url('/images/projects/deru/deru_triangle.webp')]
         bg-center bg-repeat
         bg-cover md:bg-contain
-        backdrop-blur-3xl
+        backdrop-blur-2xl
         h-screen overflow-hidden
         ${raleway.className}
         antialiased`}
@@ -60,7 +60,7 @@ export default function RootLayout({
           mx-auto
           w-full
           lg:w-[1280px]
-          rounded-t-xl
+          sm:rounded-t-xl
           border-0
           noise
         "
@@ -78,7 +78,7 @@ export default function RootLayout({
         className="
           h-full
           overflow-auto
-          rounded-b-xl
+          sm:rounded-b-xl
           mx-auto
           w-full
           lg:w-[1280px]
