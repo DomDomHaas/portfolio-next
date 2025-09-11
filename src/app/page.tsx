@@ -15,13 +15,13 @@ const previewTitles = [
   "DERU - 2018",
 ];
 
-const welcomeText = `I'm Dominik Haas-Artho an Application Engineer with a passion for digital experiences. In 2005 I've started with my professional Software Engineering journey. Since then I love creating
-                interactive, digital experiences. With a background in Game Design I have a eye for emotional design and design in general.`;
+const welcomeText = `In 2005 I've started with my professional software engineering journey and since then I love creating
+                interactive, digital experiences. With a background in game design I have a eye for emotional design and design more broadly.`;
 
-const expText = `I worked on desktop & web apps, complex multi-tier client-server-applications, mobile-apps and 2D / 3D
-                Games. I take care of the full software lifecycle from design stage to deployment including DevOps.
+const expText = `I worked on desktop & web apps, complex multi-tier client-server systems, mobile-apps and 2D / 3D
+                games. I take care of the full software lifecycle from design stage to deployment, including DevOps.
                 I've lead teams as senior
-                engineer in all concerns of software engineering and design. I enjoy rapid prototyping as much as working on high quality, solid architectures.`;
+                engineer across all aspects of software engineering and design. I enjoy rapid prototyping as much as building high-quality architectures.`;
 
 export default function HomePage() {
 
@@ -68,13 +68,13 @@ export default function HomePage() {
            className="py-2 md:py-4 md:p-4 md:pb-8 "
       >
         <div className="inline md:hidden text-3xl text-center">
-          Crafting intuitive <br/><span className="text-white dark:text-black font-light">Digital Experiences</span>
-          <br/>where <span className={`text-white dark:text-black font-light`}>Design & Engineering</span> meet
+          Crafting intuitive <br/><span className="text-white dark:text-black font-light">digital experiences</span>
+          <br/>where <span className={`text-white dark:text-black font-light`}>design & engineering</span> meet
         </div>
 
         <div className="hidden md:inline text-5xl">
-          Crafting intuitive <span className="text-white dark:text-black font-light"> Digital Experiences</span>
-          <br/>where <span className={`text-white dark:text-black font-light`}>Design & Engineering</span> meet
+          Crafting intuitive <span className="text-white dark:text-black font-light"> digital experiences</span>
+          <br/>where <span className={`text-white dark:text-black font-light`}>design and engineering</span> meet
         </div>
 
       </div>
@@ -88,13 +88,15 @@ export default function HomePage() {
             </div>
 
             <div className="w-full mt-8 md:mt-0 md:my-0 md:ml-8 md:mr-4 md:w-3/4">
-              <div className="text-xl">Welcome and thanks for the visit</div>
+              {/* <div className="text-xl">Welcome and thanks for the visit</div> */}
+              <div className="text-xl">{`Hi, I'm Dominik from Switzerland`}</div>
+              
               <div className="mt-2 text-lg">
                 {welcomeText}
               </div>
 
               <div className="mt-4">
-                <div className="text-xl">Work Experience</div>
+                {/* <div className="text-xl">Work Experience</div> */}
                 <div className="mt-2 text-lg">
                 {expText}
                 </div>
