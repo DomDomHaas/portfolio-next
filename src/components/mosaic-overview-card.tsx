@@ -42,18 +42,21 @@ export default function MosaicOverviewCard({
                   className={`
                     basis-1/3
                     h-[${height}px]
-                    hover:scale-110
-                    transition-all
+                    ${index === 0 ? 'rounded-tl-xl' : ''}
+                    ${index === 1 ? 'px-1' : ''}
+                    ${index === 2 ? 'rounded-tr-xl' : ''}                   
+                    overflow-hidden
                   `}
             >
-              <img src={entry.img} alt={entry.title}
+              <img src={entry.img}
+                   alt={entry.title}
                    height={height}
                    className={`
+                    transition-all
+                    hover:scale-125
                     h-[${height}px]
                     w-full
                     ${ contain ? 'object-contain' : 'object-cover' }
-                    ${index === 0 ? 'rounded-tl-xl' : ''}
-                    ${index === 2 ? 'rounded-tr-xl' : ''}                   
                    `}
               />
             </Link>
