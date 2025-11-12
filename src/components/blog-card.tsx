@@ -4,6 +4,7 @@ import BlogCardBody from "@/components/blog-card-body";
 
 type BlogCardProps = BlogPost & {
   imgClassName?: string;
+  id?: string,
 }
 
 const defaultImgClassName = "rounded-t-xl w-full object-cover";
@@ -14,9 +15,10 @@ export default function BlogCard({
   description,
   content,
   imgClassName,
+  id,
 } : BlogCardProps) {
   return(
-    <Card id="BlogCard"
+    <Card id={ id ? id : "BlogCard" }
           className="grid
                      grid-rows-[180px_220px]
                      gap-0 py-0
