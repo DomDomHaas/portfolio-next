@@ -11,7 +11,8 @@ import {useEffect, useState} from "react";
 import {loadProjects} from "@/app/projects/projectsApi";
 import {Project, ProjectItem} from "../../../types/projectTypes";
 import ProjectBody from "@/components/project-body";
-import {useParams, useRouter} from "next/navigation";
+import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 /*
@@ -44,59 +45,71 @@ const extractProjectTags = (projects: Project[]) => {
 }
 */
 
+
 export default function ProjectsList() {
   const router = useRouter();
 
   const params = useParams();
-  const preSelectedProjectItem = params.id as string;
+  const preSelectedProjectId = params.id as string;
 
   const [projects, setProjects] = useState<Project[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  // const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [selectedProject, setSelectedProject] = useState<ProjectItem | undefined>(undefined)
 
-  // on mount
-  useEffect(() => {
-    loadProjects().then((projects) => {
-      setProjects(projects);
-    });
-  }, []);
 
-  const selectProject = (projectItemTitle: string) => {
+  const selectProject = (projectItemTitle: string, projects: Project[]) : ProjectItem | undefined => {
+    let selection;
     projects.forEach((project) => {
       if (project.items) {
         for (const item of project.items) {
           if (item.title === projectItemTitle || item.content === projectItemTitle) {
             item.isActive = true;
             setSelectedProject(item);
+            selection = item;
           } else {
             item.isActive = false;
           }
         }
       }
     })
+
+    return selection;
   }
 
-  useEffect(() => {
+
+ const preSelectProjectItem = (id: string, projects: Project[]) => {
     if (projects.length > 0) {
-      if (preSelectedProjectItem) {
-        selectProject(preSelectedProjectItem);
+      if (id) {
+        selectProject(id, projects);
       } else {
-        const autoSelectFirst = projects[0].items[0].title;
-        selectProject(autoSelectFirst);
+        const projectItem = projects[0].items[0];
+        if (projectItem) {
+          router.replace(`/projects/${projectItem.content}`);
+        }
       }
     }
-  }, [projects, preSelectedProjectItem]);
+  };
 
   // const projectTags = extractProjectTags(projects);
 
+  // on mount
+  useEffect(() => {
+    loadProjects().then((projects) => {
+      setProjects(projects);
+      preSelectProjectItem(preSelectedProjectId, projects);
+    });
+  }, []);
 
 
-  const filterProjects = () => {
-/*
+  /*
     if (selectedTags.length <= 0) {
       return projects;
     }
 */
+
+/*
+  const filterProjects = () => {
+
 
     // let filtered: Project[] = [];
 
@@ -115,14 +128,15 @@ export default function ProjectsList() {
     }
 
   }
+*/
 
-  const toggleTagSelected = (toggleTag: string) => {
-    setSelectedTags((prevTags) => {
-      return prevTags.includes(toggleTag) ? prevTags.filter((t) => t !== toggleTag) : [...prevTags, toggleTag];
-    });
+  // const toggleTagSelected = (toggleTag: string) => {
+  //   setSelectedTags((prevTags) => {
+  //     return prevTags.includes(toggleTag) ? prevTags.filter((t) => t !== toggleTag) : [...prevTags, toggleTag];
+  //   });
 
-    filterProjects();
-  }
+  //   filterProjects();
+  // }
 
   const navigateToFirstProjectItem = (projectTitle: string) => {
 
