@@ -15,13 +15,15 @@ export type NavEntry = {
   title: string,
   href: string,
   active: boolean,
+  external: boolean,
 }
 
 const navEntries : NavEntry[] = [
   {
     title: 'Projects',
     href: '/projects',
-    active: false
+    active: false,
+    external: false,
   },
 /*
   {
@@ -32,7 +34,14 @@ const navEntries : NavEntry[] = [
   {
     title: 'Blog',
     href: '/blog',
-    active: false
+    active: false,
+    external: false,
+  },
+  {
+    title: 'Contact',
+    href: 'https://linktr.ee/dominikhaas',
+    active: false,
+    external: true,
   },
 ]
 
@@ -79,6 +88,7 @@ export default function TheNavigation (
 
                   <NavigationMenuLink
                     href={entry.href}
+                    target={entry.external ? '_blank' : ''}
                     className={`m-2 my-2 p-2 py-1
                       dark:hover:bg-slate-800/50 hover:bg-slate-300/50
                       font-normal text-md sm:text-lg
