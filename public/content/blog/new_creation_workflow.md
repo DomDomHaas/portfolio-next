@@ -5,11 +5,6 @@
 The team at EnviDat is happy to announce the new workflow for dataset creation.
 We simplified the creation and editing of datasets and grouped the different information into multiple steps.
 
-![New Dataset Creation](/images/blog/creationworkflow/dataset_creation_small.jpg "New Dataset Creation")
-
-<br/>
-<br/>
-
 ## New Creation Workflow
 
 ### Prerequisite
@@ -143,4 +138,4 @@ Credits:
 - Other images and text: Dominik Haas-Artho, EnviDat team
 
 
-Originally posted on [https://envidat.ch/#/blog/new_creation_workflow.md](https://envidat.ch/#/blog/new_creation_workflow.md)
+Originally posted on <a href="https://envidat.ch/#/blog/new_creation_workflow.md" target="_blank">https://envidat.ch/#/blog/new_creation_workflow.md</a>
