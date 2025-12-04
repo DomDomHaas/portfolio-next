@@ -16,6 +16,7 @@ export default function BlogCard({
   content,
   imgClassName,
   id,
+  date,
 } : BlogCardProps) {
   return(
     <Card id={ id ? id : "BlogCard" }
@@ -40,7 +41,7 @@ export default function BlogCard({
         }
       </div>
 
-      <BlogCardBody title={title} description={description} content={content} />
+      <BlogCardBody title={title} description={description} content={content} date={date} />
 
     </Card>
   )

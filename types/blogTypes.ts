@@ -3,6 +3,7 @@ export type BlogPost = {
   img: string;
   description: string;
   content: string;
+  date: string;
 }
 
 export type PreviewItem = {

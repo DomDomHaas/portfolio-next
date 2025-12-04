@@ -14,6 +14,7 @@ export default function BlogHeroCard({
   description,
   content,
   imgClassName,
+  date,
 } : BlogHeroProps) {
   return(
     <Card id="BlogHeroCard"
@@ -32,7 +33,7 @@ export default function BlogHeroCard({
                       ">
 
 
-      <BlogCardBody title={title} description={description} content={content} />
+      <BlogCardBody title={title} description={description} content={content} date={date} />
 
       {
         img ? (

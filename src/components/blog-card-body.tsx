@@ -8,6 +8,7 @@ export default function BlogCardBody({
  description,
  content,
  children,
+ date,
 } : BlogCardProps) {
   return (
     <div id="BlogCardBody"
@@ -24,8 +25,13 @@ export default function BlogCardBody({
         {description}
       </div>
 
-      <div className="h-auto justify-self-end content-end">
-        <ButtonCard text="Read" url={`/blog/${content}`} />
+      <div className="w-full h-auto grid grid-cols-2">
+        <div className="content-center">
+          {date}
+        </div>
+        <div className="justify-self-end">
+          <ButtonCard text="Read" url={`/blog/${content}`} />
+        </div>
 
         {children}
       </div>
