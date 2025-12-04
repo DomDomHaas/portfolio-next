@@ -3,25 +3,41 @@ import { useEffect, useState } from 'react';
 
 export function useDark() {
   const [isDark, setIsDark] = useState<boolean>(false);
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  // init in on mount
+  const updateDarkTheme = (dark: boolean) => {
+    console.log('update dark', dark)
+    const isDarkTheme = document.documentElement.classList.contains('dark');
+
+    if (isDarkTheme && !dark) {
+      document.documentElement.classList.remove('dark');
+    } else if (!isDarkTheme && dark) {
+      document.documentElement.classList.add('dark');
+    // } else {
+    //   document.documentElement.classList.toggle('dark', dark);
+    }
+
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }
+
+  // on mount restore from local storage
   useEffect(() => {
-    setMounted(true);
     const dark = localStorage.getItem('isDark') === 'true';
-    setIsDark(dark);
-    document.documentElement.classList.toggle('dark', dark);
+    updateDarkTheme(dark);
+    setMounted(true);
   }, []);
 
   // apply when theme changes
   useEffect(() => {
+    if (!mounted) return;
+
     try {
       localStorage.setItem('isDark', isDark ? 'true' : 'false');
     } catch {}
 
-    document.documentElement.classList.toggle('dark', isDark);
+    updateDarkTheme(isDark);
 
-  }, [isDark]);
+  }, [isDark, mounted]);
 
   return { isDark, setIsDark, mounted };
 }

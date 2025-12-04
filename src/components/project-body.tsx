@@ -24,6 +24,7 @@ import {Button} from "@/components/ui/button";
 import {Expand} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
 import {SidebarTrigger} from "@/components/ui/sidebar";
+import { useDark } from "@/hooks/useDark";
 
 export default function ProjectBody({
   loading,
@@ -33,7 +34,8 @@ export default function ProjectBody({
   projectItem: ProjectItem,
 }) {
 
-  const [isDark, setIsDark] = useState(true);
+  // const [isDark, setIsDark] = useState(true);
+  const {isDark} = useDark();
   const [html, setHtml] = useState<string | null>(null);
   const [api, setApi] = useState<CarouselApi>();
 
@@ -42,19 +44,6 @@ export default function ProjectBody({
   // const [dialogImages, setDialogImages] = useState(projectItem.images || [])
   const [imageTitle, setImageTitle] = useState('');
 
-  // on mount
-  useEffect(() => {
-    const updateDark = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    }
-
-    updateDark();
-
-    const observer = new MutationObserver(updateDark)
-    observer.observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
-
-    return () => observer.disconnect();
-  }, []);
 
   api?.on("init", () => {
     const currentIndex = dialogImages.findIndex((img) => getImageTitle(img) === imageTitle);

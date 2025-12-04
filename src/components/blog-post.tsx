@@ -25,22 +25,6 @@ export default function BlogPost() {
 
   const [html, setHtml] = useState<string | null>(null)
 
-  // on mount
-/*
-  useEffect(() => {
-    const updateDark = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    }
-
-    updateDark();
-
-    const observer = new MutationObserver(updateDark)
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-    return () => observer.disconnect();
-  }, []);
-*/
-
 
   useEffect(() => {
     loadPostContent(postId).then((renderedHtml: string) => setHtml(renderedHtml));
