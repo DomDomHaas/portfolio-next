@@ -21,12 +21,12 @@ export default function BlogCard({
   return(
     <Card id={ id ? id : "BlogCard" }
           className="grid
-                     grid-rows-[180px_220px]
+                     grid-rows-[170px_200px]
                      gap-0 py-0
                      bg-slate-200/30
                      border-0
                      dark:bg-slate-500/40
-                     h-[400px]
+                     h-[375px]
                      rounded-xl
                      hover:shadow-md
           ">

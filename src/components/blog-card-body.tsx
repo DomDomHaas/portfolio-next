@@ -13,15 +13,17 @@ export default function BlogCardBody({
   return (
     <div id="BlogCardBody"
          className="
-           grid grid-rows-[42px_auto_36px]
+           grid
+           grid-rows-[40px_auto_36px]
+           md:grid-rows-[50px_auto_36px]
            h-full p-4 gap-2
          ">
 
-      <div className="text-2xl leading-none">
+      <div className="text-lg md:text-2xl leading-none">
         {title}
       </div>
 
-      <div className="text-base">
+      <div className="text-sm md:text-base">
         {description}
       </div>
 

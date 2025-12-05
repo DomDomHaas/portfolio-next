@@ -6,15 +6,12 @@ export function useDark() {
   const [mounted, setMounted] = useState<boolean>(false);
 
   const updateDarkTheme = (dark: boolean) => {
-    console.log('update dark', dark)
     const isDarkTheme = document.documentElement.classList.contains('dark');
 
     if (isDarkTheme && !dark) {
       document.documentElement.classList.remove('dark');
     } else if (!isDarkTheme && dark) {
       document.documentElement.classList.add('dark');
-    // } else {
-    //   document.documentElement.classList.toggle('dark', dark);
     }
 
     setIsDark(document.documentElement.classList.contains('dark'));
