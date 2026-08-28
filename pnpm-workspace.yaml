@@ -1,10 +1,7 @@
-ignoredBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - sharp
-  - unrs-resolver
-
-onlyBuiltDependencies:
-  - canvas
+allowBuilds:
+  canvas: true
+  sharp: true
+  unrs-resolver: true
 
 overrides:
   next@>=16.0.0-beta.0 <16.0.9: '>=16.0.9'
